@@ -2,6 +2,7 @@ import React from "react";
 import AuthForm from "../components/AuthForm";
 import { register } from "../api/auth";
 import { Link, useNavigate } from "react-router-dom";
+import { ROUTES } from "../constants/routes";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Signup = () => {
       console.log(res);
       if (res.success) {
         alert(res.message);
-        navigate("/login");
+        navigate(ROUTES.LOGIN);
       }
     } catch (error) {
       // console.log(error);

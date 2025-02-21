@@ -1,9 +1,31 @@
-// ProtectedRoutes : 로그인이 필요한 페이지에 접근할 수 있도록 하는 컴포넌트
-// 로그인이 되어있지 않은 사용자는 login 페이지로 리다이렉트
-import React from "react";
+import { useContext, useEffect, useRef } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../constants/routes";
 
-const ProtectedRoutes = () => {
-  return <div> ProtectedRoutes </div>;
+const ProtectedRoutes = ({ element, isLogin }) => {
+  const { isAuthenticated } = useContext(AuthContext);
+  const navigate = useNavigate();
+  // useEffect가 두번 실행 되는 이유 : stricmode에서 제대로 된 함수인 지 확인하려고 두번 실행해서 검증
+  const hasAlerted = useRef(false);
+
+  useEffect(() => {
+    if (!isLogin && !isAuthenticated && !hasAlerted.current) {
+      // 로그인해야 하는 페이지인데 로그인X
+      alert("로그인을 해야 테스트가 가능합니다.");
+      // console.log("useEffect 실행 if 조건");
+      hasAlerted.current = true;
+      navigate(ROUTES.LOGIN);
+    } else if (isLogin && isAuthenticated && !hasAlerted.current) {
+      // 로그인하지 않아야 하는 페이지인데 로그인O
+      alert("로그인 상태이므로 홈으로 이동합니다.");
+      // console.log("useEffect 실행 if else 조건");
+      hasAlerted.current = true;
+      navigate(ROUTES.HOME);
+    }
+  }, [navigate, isLogin, isAuthenticated]);
+
+  return element;
 };
 
 export default ProtectedRoutes;

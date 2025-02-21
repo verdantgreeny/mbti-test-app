@@ -1,8 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import AuthForm from "../components/AuthForm";
 import { login, getUserProfile } from "../api/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { ROUTES } from "../constants/routes";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,8 +18,8 @@ const Login = () => {
         alert("토큰이 없어 로그인에 실패했습니다.");
       }
       authenticateUser(accessToken);
-      alert(`${nickname}님 로그인에 성공하셨습니다. 홈화면으로 이동합니다.`);
-      navigate("/");
+      alert(`${nickname}님 로그인에 성공하셨습니다.`);
+      navigate(ROUTES.HOME);
     } catch (error) {
       // console.log(error)
       alert(error.response.data.message);

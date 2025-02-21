@@ -3,7 +3,7 @@ import { updateProfile } from "../api/auth";
 import { AuthContext } from "../context/AuthContext";
 
 const Profile = () => {
-  const [nickname, setNickname] = useState(user?.nickname || "");
+  // const [nickname, setNickname] = useState(user?.nickname || "");
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
 
   const handleNicknameChange = (e) => {
