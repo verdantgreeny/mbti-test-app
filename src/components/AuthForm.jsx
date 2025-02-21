@@ -12,6 +12,7 @@ const AuthForm = ({ mode, onSubmit }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // console.log(name, value);
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -20,6 +21,7 @@ const AuthForm = ({ mode, onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    onSubmit(formData);
   };
 
   // id 입력을 위한 input 만 힌트로 만들어 두었습니다. 참고해서 한번 만들어봅시다!
