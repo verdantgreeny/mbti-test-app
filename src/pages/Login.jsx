@@ -1,13 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import AuthForm from "../components/AuthForm";
 import { login, getUserProfile } from "../api/auth";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
-const Login = ({ setUser }) => {
+const Login = () => {
+  const navigate = useNavigate();
+  const { authenticateUser, isAuthenticated } = useContext(AuthContext);
+
+  // console.log(isAuthenticated);
+
   const handleLogin = async (formData) => {
     try {
-      const res = await login(formData);
-      console.log(res);
+      const { accessToken, nickname } = await login(formData);
+      // console.log(accessToken);
+      // console.log(nickname);
+      if (!accessToken) {
+        alert("토큰이 없어 로그인에 실패했습니다.");
+      }
+      authenticateUser(accessToken);
+      alert(`${nickname}님 로그인에 성공하셨습니다. 홈화면으로 이동!!`);
+      navigate("/");
     } catch (error) {
       alert("로그인에 실패했습니다. 다시 시도해주세요.");
     }

@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { updateProfile } from "../api/auth";
+import { AuthContext } from "../context/AuthContext";
 
-const Profile = ({ user, setUser }) => {
+const Profile = () => {
   const [nickname, setNickname] = useState(user?.nickname || "");
+  const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
 
   const handleNicknameChange = (e) => {
     setNickname(e.target.value);
