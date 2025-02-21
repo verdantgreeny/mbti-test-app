@@ -10,7 +10,7 @@ const Signup = () => {
     console.log("formData:", formData);
     try {
       const res = await register(formData);
-      // console.log(res.success);
+      console.log(res);
       if (res.success) {
         alert(res.message);
         navigate("/login");

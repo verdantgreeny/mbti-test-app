@@ -6,9 +6,7 @@ import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { authenticateUser, isAuthenticated } = useContext(AuthContext);
-
-  // console.log(isAuthenticated);
+  const { authenticateUser } = useContext(AuthContext);
 
   const handleLogin = async (formData) => {
     try {
@@ -19,10 +17,11 @@ const Login = () => {
         alert("토큰이 없어 로그인에 실패했습니다.");
       }
       authenticateUser(accessToken);
-      alert(`${nickname}님 로그인에 성공하셨습니다. 홈화면으로 이동!!`);
+      alert(`${nickname}님 로그인에 성공하셨습니다. 홈화면으로 이동합니다.`);
       navigate("/");
     } catch (error) {
-      alert("로그인에 실패했습니다. 다시 시도해주세요.");
+      // console.log(error)
+      alert(error.response.data.message);
     }
   };
 
