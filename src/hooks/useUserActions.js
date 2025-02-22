@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login, register, updateProfile } from "../api/auth";
-import { createTestResult } from "../api/testResults";
+import { createTestResult, deleteTestResult } from "../api/testResults";
 import { calculateMBTI } from "../utils/mbtiCalculator";
 import { ROUTES } from "../constants/routes";
 import { AuthContext } from "../context/AuthContext";
@@ -75,10 +75,12 @@ const useUserActions = () => {
         userId: user?.id || "unknown",
       };
       await createTestResult(resultData);
-      setResult(mbtiResult);
+      // setResult(mbtiResult);
+      return resultData;
     } catch (error) {
       // console.log(error);
       toast.error(error.response?.data?.message || error.message);
+      return null;
     }
   };
 

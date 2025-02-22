@@ -25,8 +25,48 @@
       "userId": "mbtitest"
     },
     {
-      "id": "9b11",
-      "nickname": "마지막 수정이었으면",
+      "id": "77a8",
+      "nickname": "프로필 수정",
+      "result": "INFP",
+      "visibility": true,
+      "date": "2025-02-22",
+      "userId": "mbtitest"
+    },
+    {
+      "id": "02c8",
+      "nickname": "프로필 수정",
+      "result": "INFP",
+      "visibility": true,
+      "date": "2025-02-22",
+      "userId": "mbtitest"
+    },
+    {
+      "id": "6b38",
+      "nickname": "프로필 수정",
+      "result": "INFP",
+      "visibility": true,
+      "date": "2025-02-22",
+      "userId": "mbtitest"
+    },
+    {
+      "id": "af81",
+      "nickname": "프로필 수정",
+      "result": "INTJ",
+      "visibility": true,
+      "date": "2025-02-22",
+      "userId": "mbtitest"
+    },
+    {
+      "id": "447d",
+      "nickname": "프로필 수정",
+      "result": "ESTJ",
+      "visibility": true,
+      "date": "2025-02-22",
+      "userId": "mbtitest"
+    },
+    {
+      "id": "63ca",
+      "nickname": "프로필 수정",
       "result": "ESTJ",
       "visibility": true,
       "date": "2025-02-22",

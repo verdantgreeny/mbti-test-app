@@ -5,15 +5,21 @@ import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../constants/routes";
 import { AuthContext } from "../context/AuthContext";
 import useUserActions from "../hooks/useUserActions";
+import Button from "../components/Button";
 
 const TestPage = () => {
-  const navigate = useNavigate();
   const [result, setResult] = useState(null);
   const { user } = useContext(AuthContext);
   const { testSubmitHandler } = useUserActions();
+  const navigate = useNavigate();
 
   const handleTestSubmit = async (answers) => {
-    await testSubmitHandler(answers, setResult);
+    const res = await testSubmitHandler(answers);
+    if (res) {
+      setResult(res.result);
+    } else {
+      console.error("테스트 결과가 없습니다.");
+    }
   };
 
   const handleNavigateToResults = () => {
@@ -22,7 +28,7 @@ const TestPage = () => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center text-white">
-      <div className=" rounded-lg p-8 max-w-2xl w-full h-full shadow-lg">
+      <div className="rounded-lg p-8 max-w-2xl w-full h-full shadow-lg">
         {!result ? (
           <>
             <h1 className="text-3xl font-bold text-primary-color mb-6 text-center">
@@ -32,7 +38,7 @@ const TestPage = () => {
           </>
         ) : (
           <>
-            <h1 className="text-3xl font-bold text-primary-color mb-6 text-center ">
+            <h1 className="text-3xl font-bold text-primary-color mb-6 text-center">
               "{user.nickname}" 님의 결과
               <p className="text-4xl mt-3"> {result} </p>
             </h1>
@@ -42,27 +48,18 @@ const TestPage = () => {
                 alt="결과 아이콘"
                 className="w-16 h-16 object-cover transform transition-transform duration-300 hover:scale-110"
               />
-
               <p className="text-lg text-justify">
                 {mbtiDescriptions[result] ||
                   "해당 성격 유형에 대한 설명이 없습니다."}
               </p>
 
-              <div className="flex justify-center space-x-3 mt-4">
-                <button className="text-sm px-10 py-2 border border-gray-300 bg-[#1C5952] rounded-full hover:bg-[#E98934] transition ">
-                  삭제
-                </button>
-                <button className="text-sm px-10 py-2 border border-gray-300 bg-[#1C5952] rounded-full hover:bg-[#E98934] transition">
-                  공개
-                </button>
-              </div>
-
-              <button
+              <Button
                 onClick={handleNavigateToResults}
-                className="w-full bg-primary-color py-3 rounded-lg font-semibold hover:bg-primary-dark transition duration-300 hover:text-[#E98934]"
+                type="submit"
+                className="w-full hover:bg-white hover:text-black"
               >
                 결과 페이지로 이동하기
-              </button>
+              </Button>
             </div>
           </>
         )}
