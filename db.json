@@ -1,3 +1,12 @@
 {
-  "testResults": []
+  "testResults": [
+    {
+      "id": "9218",
+      "result": "ESTJ"
+    },
+    {
+      "id": "97ea",
+      "result": "ISTJ"
+    }
+  ]
 }

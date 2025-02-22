@@ -1,3 +1,5 @@
+import { questions } from "../data/questions";
+
 export const mbtiDescriptions = {
   ENFJ: "ENFJ: 이타주의자의 끝판왕! ENFJ는 사람을 돕는 데에 진심인 편이에요. 이들은 모든 사람에게 좋은 사람이 되고자 하며, 자기 자신보다 남을 더 우선시하는 슈퍼히어로 같은 존재예요. 친구들이 고민 상담을 할 때마다 차 한 잔 준비해놓고 기다리고 있을지도 몰라요. 그러나 가끔 너무 많은 걸 감당하려고 해서 자신을 잊어버리기도 해요. 그래서 가끔은 '나도 휴식이 필요해!'라고 외칠 필요가 있어요.",
 
@@ -28,6 +30,8 @@ export const mbtiDescriptions = {
   ISFP: "ISFP: 예술적 영혼을 가진 자유로운 영혼! ISFP는 삶을 예술적으로 표현하고 싶어하는 사람들입니다. 이들은 항상 자신의 감정과 경험을 창의적인 방법으로 표현하며, '삶은 예술이다'라는 믿음을 가지고 있어요. 그러나 가끔은 너무 자유로워서 계획이 없을 때가 많아요. 하지만 그들은 언제나 자신만의 방식으로 세상을 아름답게 만듭니다.",
 
   INTP: "INTP: 세상의 진리를 탐구하는 철학자! INTP는 항상 새로운 아이디어와 이론을 탐구하는 사람들입니다. 이들은 '왜?'라는 질문을 끊임없이 던지며, 세상의 모든 것을 논리적으로 이해하려고 해요. 그러나 가끔은 너무 생각에 빠져서 현실과 동떨어질 때가 있어요. 그래도 이들의 지식과 통찰력은 언제나 놀라움을 줍니다.",
+
+  ENTP: "지적 도전을 즐기는 영리하고 호기심이 많은 사색가! ENTP은 두뇌 회전이 빠르고 대담한 성격으로 현재 상황에 이의를 제기하는 데 거리낌이 없는 사람들입니다. 이들은 어떤 의견이나 사람에 반대하는 일을 두려워하지 않으며, 논란이 될 만한 주제에 대해 격렬하게 논쟁하는 일을 즐기고 있어요. 그렇다고 반론을 제기하는 데만 관심이 있거나 악의를 지닌 것은 아니랍니다. ENTP는 사실 지식이 풍부하고 호기심이 넘치며 활기찬 유머 감각으로 다른 사람들을 즐겁게 할 수 있는 성격이랍니다.",
 };
 
 export const calculateMBTI = (answers) => {
@@ -35,16 +39,19 @@ export const calculateMBTI = (answers) => {
   const scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
 
   // answers 배열을 순회하며 점수 누적
-  answers.forEach(({ type, answer }) => {
-    const [option1, option2] = type.split("/"); // E/I, S/N 등의 유형 분리
-    if (answer === option1) {
-      scores[option1]++;
-    } else if (answer === option2) {
-      scores[option2]++;
-    }
+  answers.forEach((answerObj, index) => {
+    // 질문의 type ("E/I" 등)을 "/" 기준으로 분리
+    const [option1, option2] = answerObj.type.split("/");
+
+    // 선택한 옵션이 질문의 options 배열에서 몇 번째에 위치하는지 확인
+    const question = questions[index];
+    const selectedIndex = question.options.indexOf(answerObj.answer);
+
+    if (selectedIndex === 0) scores[option1]++; // 선택한 옵션이 0번째에 위치하면 option1에 점수 추가
+    if (selectedIndex === 1) scores[option2]++; // 선택한 옵션이 1번째에 위치하면 option2에 점수 추가
   });
 
-  // 각 점수 비교를 통해 최종 MBTI 유형 계산
+  // 점수를 비교해 최종 MBTI 유형 계산
   const result = `${scores.E >= scores.I ? "E" : "I"}${
     scores.S >= scores.N ? "S" : "N"
   }${scores.T >= scores.F ? "T" : "F"}${scores.J >= scores.P ? "J" : "P"}`;
@@ -60,6 +67,3 @@ const answers = [
   { type: "J/P", answer: "J" },
   // 추가 질문들...
 ];
-
-const mbtiResult = calculateMBTI(answers);
-console.log("MBTI 결과:", mbtiResult); // 예: "MBTI 결과: ESTJ"

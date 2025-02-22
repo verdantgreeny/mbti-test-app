@@ -3,18 +3,30 @@ import TestForm from "../components/TestForm";
 import { calculateMBTI, mbtiDescriptions } from "../utils/mbtiCalculator";
 import { createTestResult } from "../api/testResults";
 import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../constants/routes";
 
-const TestPage = ({ user }) => {
+const TestPage = () => {
   const navigate = useNavigate();
   const [result, setResult] = useState(null);
 
   const handleTestSubmit = async (answers) => {
-    const mbtiResult = calculateMBTI(answers);
-    /* Test 결과는 mbtiResult 라는 변수에 저장이 됩니다. 이 데이터를 어떻게 API 를 이용해 처리 할 지 고민해주세요. */
+    try {
+      const mbtiResult = calculateMBTI(answers);
+      /* Test 결과는 mbtiResult 라는 변수에 저장이 됩니다. 이 데이터를 어떻게 API 를 이용해 처리 할 지 고민해주세요. */
+      // console.log(`MBTI 결과: ${mbtiResult}`);
+      // console.log(mbtiDescriptions[mbtiResult]);
+
+      await createTestResult({ result: mbtiResult });
+
+      setResult(mbtiResult);
+    } catch (error) {
+      console.error("테스트 결과 저장 실패:", error);
+      alert("테스트 결과 저장 실패");
+    }
   };
 
   const handleNavigateToResults = () => {
-    navigate("/results");
+    navigate(ROUTES.TEST_RESULT_PAGE);
   };
 
   return (
@@ -38,7 +50,7 @@ const TestPage = ({ user }) => {
             </p>
             <button
               onClick={handleNavigateToResults}
-              className="w-full bg-primary-color text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition duration-300 hover:text-[#FF5A5F]"
+              className="w-full bg-primary-color text-black py-3 rounded-lg font-semibold hover:bg-primary-dark transition duration-300 hover:text-[#FF5A5F]"
             >
               결과 페이지로 이동하기
             </button>
