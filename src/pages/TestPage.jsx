@@ -1,13 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TestForm from "../components/TestForm";
 import { calculateMBTI, mbtiDescriptions } from "../utils/mbtiCalculator";
 import { createTestResult } from "../api/testResults";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../constants/routes";
+import { toast } from "react-toastify";
+import { getUserProfile } from "../api/auth";
 
 const TestPage = () => {
   const navigate = useNavigate();
   const [result, setResult] = useState(null);
+  const accessToken = localStorage.getItem("accessToken");
+  const [user, setUser] = useState('');
+
+    useEffect(() => {
+      const fetchUserProfile = async () => {
+        try {
+          const res = await getUserProfile(accessToken);
+          // console.log(res);
+          setUser(res);
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
+  
+      fetchUserProfile();
+    }, [accessToken]);
+  
+    // console.log("유저:", user);
 
   const handleTestSubmit = async (answers) => {
     try {
@@ -16,12 +36,19 @@ const TestPage = () => {
       // console.log(`MBTI 결과: ${mbtiResult}`);
       // console.log(mbtiDescriptions[mbtiResult]);
 
-      await createTestResult({ result: mbtiResult });
-
+      const result = {
+        nackname: user?.nickname || '',
+        result: mbtiResult,
+        visibility: true,
+        date: new Date().toISOString().split("T")[0], //현재 날짜를 yyyy-MM-dd 형식으로 생성!!
+        userId: user?.id || "unknown",
+      }
+      
+      await createTestResult(result);
       setResult(mbtiResult);
     } catch (error) {
-      console.error("테스트 결과 저장 실패:", error);
-      alert("테스트 결과 저장 실패");
+      // console.log(error);
+      toast.error(error.message);
     }
   };
 

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { getUserProfile, updateProfile } from "../api/auth";
 import { AuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   // const [nickname, setNickname] = useState(user?.nickname || "");
@@ -19,7 +20,7 @@ const Profile = () => {
         // console.log(res);
         setNickname(nickname);
       } catch (error) {
-        console.log(error);
+        console.log(error.message);
       }
     };
 
@@ -33,10 +34,10 @@ const Profile = () => {
       //바꿀 닉네임을 서버에 보내고 인증된 사용자인지는 accessToken으로 확인하여 성공하면 결과 반환
       const { data } = await updateProfile({ nickname }, accessToken);
       // console.log(data);
-      alert(`'${data.nickname}'(으)로 닉네임이 변경되었습니다.`);
+      toast.success(`'${data.nickname}'(으)로 닉네임이 변경되었습니다.`);
     } catch (error) {
       console.log(error.response.data.message);
-      alert(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
