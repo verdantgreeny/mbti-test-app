@@ -4,25 +4,26 @@ import { login, getUserProfile } from "../api/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { ROUTES } from "../constants/routes";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
   const { authenticateUser } = useContext(AuthContext);
 
-  const handleLogin = async (formData) => {
+  const handleLogin = async (userData) => {
     try {
-      const { accessToken, nickname } = await login(formData);
+      const { accessToken, nickname } = await login(userData);
       // console.log(accessToken);
       // console.log(nickname);
       if (!accessToken) {
-        alert("토큰이 없어 로그인에 실패했습니다.");
+        toast.error("토큰이 없어 로그인에 실패했습니다.");
       }
       authenticateUser(accessToken);
-      alert(`${nickname}님 로그인에 성공하셨습니다.`);
+      toast.success(`${nickname}님 환영합니다(홈으로 이동).`);
       navigate(ROUTES.HOME);
     } catch (error) {
       // console.log(error)
-      alert(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 

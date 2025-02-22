@@ -13,7 +13,11 @@ export const login = async (userData) => {
 };
 
 export const getUserProfile = async (accessToken) => {
-  const { data } = await axios.get(`${API_URL}/profile`, {
+  if (!accessToken) {
+    console.log("로그인된 사용자만 프로필을 볼 수 있습니다.");
+    return;
+  }
+  const { data } = await axios.get(`${API_URL}/user`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },

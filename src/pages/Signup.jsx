@@ -3,22 +3,23 @@ import AuthForm from "../components/AuthForm";
 import { register } from "../api/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "../constants/routes";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const navigate = useNavigate();
 
-  const handleSignup = async (formData) => {
-    console.log("formData:", formData);
+  const handleSignup = async (userData) => {
+    console.log("userData:", userData);
     try {
-      const res = await register(formData);
+      const res = await register(userData);
       console.log(res);
       if (res.success) {
-        alert(res.message);
+        toast.success(res.message);
         navigate(ROUTES.LOGIN);
       }
     } catch (error) {
       // console.log(error);
-      alert(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 

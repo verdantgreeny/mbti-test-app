@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../constants/routes";
+import { toast } from "react-toastify";
 
 const ProtectedRoutes = ({ element, isLogin }) => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -12,13 +13,13 @@ const ProtectedRoutes = ({ element, isLogin }) => {
   useEffect(() => {
     if (!isLogin && !isAuthenticated && !hasAlerted.current) {
       // 로그인해야 하는 페이지인데 로그인X
-      alert("로그인을 해야 테스트가 가능합니다.");
+      toast.info("로그인을 해야 테스트가 가능합니다.");
       // console.log("useEffect 실행 if 조건");
       hasAlerted.current = true;
       navigate(ROUTES.LOGIN);
     } else if (isLogin && isAuthenticated && !hasAlerted.current) {
       // 로그인하지 않아야 하는 페이지인데 로그인O
-      alert("로그인 상태이므로 홈으로 이동합니다.");
+      // toast.info("로그인 상태이므로 홈으로 이동합니다.");
       // console.log("useEffect 실행 if else 조건");
       hasAlerted.current = true;
       navigate(ROUTES.HOME);

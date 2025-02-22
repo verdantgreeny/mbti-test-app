@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Layout = () => {
   const { isAuthenticated, logoutUser } = useContext(AuthContext);
 
-  const handleLogout = async () => {
+  const handleLogout = () => {
     logoutUser();
-    alert("로그아웃되었습니다.");
+    toast.success("로그아웃되었습니다.");
   };
 
   return (
