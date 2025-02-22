@@ -2,7 +2,7 @@
   "testResults": [
     {
       "id": "1441",
-      "nackname": "됐니? 바뀐거니? ",
+      "nickname": "됐니? 바뀐거니? ",
       "result": "ENFJ",
       "visibility": true,
       "date": "2025-02-22",
@@ -10,8 +10,56 @@
     },
     {
       "id": "c754",
-      "nackname": "됐니? 바뀐거니? ",
+      "nickname": "됐니? 바뀐거니? ",
       "result": "INFP",
+      "visibility": true,
+      "date": "2025-02-22",
+      "userId": "mbtitest"
+    },
+    {
+      "id": "cb9e",
+      "nickname": "닉네임 수정좀 해봅니다.",
+      "result": "ESTJ",
+      "visibility": true,
+      "date": "2025-02-22",
+      "userId": "mbtitest"
+    },
+    {
+      "id": "889f",
+      "nickname": "닉네임 수정좀 해봅니다.",
+      "result": "ESTJ",
+      "visibility": true,
+      "date": "2025-02-22",
+      "userId": "mbtitest"
+    },
+    {
+      "id": "36e4",
+      "nickname": "닉네임 수정좀 해봅니다.",
+      "result": "ESTJ",
+      "visibility": true,
+      "date": "2025-02-22",
+      "userId": "mbtitest"
+    },
+    {
+      "id": "f3a3",
+      "nickname": "닉네임 수정좀 해봅니다.",
+      "result": "ESTJ",
+      "visibility": true,
+      "date": "2025-02-22",
+      "userId": "mbtitest"
+    },
+    {
+      "id": "0caa",
+      "nickname": "닉네임 수정좀 해봅니다.",
+      "result": "ESTJ",
+      "visibility": true,
+      "date": "2025-02-22",
+      "userId": "mbtitest"
+    },
+    {
+      "id": "b8ca",
+      "nickname": "닉네임 수정했지롱",
+      "result": "ESTJ",
       "visibility": true,
       "date": "2025-02-22",
       "userId": "mbtitest"

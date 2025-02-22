@@ -42,30 +42,32 @@ const Profile = () => {
   };
 
   return (
-    <div className="text-center p-6">
-      <h1 className="text-2xl font-bold mb-4">프로필 수정</h1>
-      <form onSubmit={handleSubmit} className="space-y-4 ">
-        <div>
-          <label htmlFor="nickname" className="block mb-2 font-medium">
-            닉네임
-          </label>
-          <input
-            id="nickname"
-            type="text"
-            value={nickname}
-            onChange={handleNicknameChange}
-            placeholder="닉네임을 입력하세요"
-            className="p-2 border border-gray-300 rounded-lg w-full"
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          className="px-4 py-2 bg-green-900 text-white rounded hover:bg-green-700 transition"
-        >
-          프로필 업데이트
-        </button>
-      </form>
+    <div className="flex flex-col items-center justify-center min-h-full text-white">
+      <div className="max-w-2xl w-full border rounded-lg p-10 space-y-10">
+        <h1 className="text-3xl font-bold text-center">프로필 수정</h1>
+        <form onSubmit={handleSubmit} className="space-y-10">
+          <div className="flex items-center justify-center space-x-4">
+            <label htmlFor="nickname" className="block mb-2 font-bold text-2xl">
+              닉네임 :
+            </label>
+            <input
+              id="nickname"
+              type="text"
+              value={nickname}
+              onChange={handleNicknameChange}
+              placeholder="닉네임을 입력하세요"
+              className="p-2 border border-gray-300 bg-inherit rounded-lg w-96"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full px-6 py-3 bg-[#1C5952] text-white shadow-md border border-gray-300 rounded-full hover:bg-[#E98934] transition"
+          >
+            프로필 업데이트
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

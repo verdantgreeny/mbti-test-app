@@ -15,7 +15,12 @@ const Layout = () => {
     <div className="min-h-screen flex flex-col">
       {/* 네비게이션 바 */}
       <nav className="bg-black text-white py-4 px-10 flex justify-between items-center">
-        <h1 className="text-xl font-bold">INF∞</h1>
+        {/* <h1 className="text-xl font-bold">INF∞</h1> */}
+        <img
+          src="../../public/logo.png"
+          alt="레이아웃 로고"
+          className="w-24 hover:animate-wiggle transition-transform duration-2000"
+        />
         <div className="space-x-6">
           {/* 로그인 여부에 따라 링크 조건부 렌더링 */}
           <Link to="/" className="hover:underline">
@@ -39,7 +44,7 @@ const Layout = () => {
                 Test Page
               </Link>
               <Link to="/test-result-page" className="hover:underline">
-                Test Result
+                Test Results
               </Link>
               <button
                 onClick={handleLogout} // 로그아웃 함수 연결
@@ -53,7 +58,7 @@ const Layout = () => {
       </nav>
 
       {/* 메인 컨텐츠 영역 */}
-      <main className="flex-grow container mx-auto p-6">
+      <main className="bg-black flex-grow p-6">
         <Outlet />
       </main>
 

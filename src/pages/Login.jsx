@@ -28,14 +28,14 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center">
-      <div className="bg-white p-8 rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold text-center mb-6">로그인</h1>
+    <div className="flex justify-center items-center min-h-full text-white">
+      <div className="p-10 rounded-lg border max-w-md w-full space-y-8">
+        <h1 className="text-3xl font-bold text-center mb-6">로그인</h1>
         <AuthForm mode="login" onSubmit={handleLogin} />
-        <div className="text-center mt-4">
+        <div className="text-center mt-6">
           <p>
             계정이 없으신가요?{" "}
-            <Link to="/signup" className="text-green-500 hover:underline">
+            <Link to="/signup" className="text-[#E98934] hover:underline">
               회원가입
             </Link>
           </p>

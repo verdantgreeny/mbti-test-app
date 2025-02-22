@@ -3,7 +3,7 @@ import { questions } from "../data/questions";
 
 const TestForm = ({ onSubmit }) => {
   const [answers, setAnswers] = useState(
-    Array(questions.length).fill({ type: "", answer: "" }),
+    Array(questions.length).fill({ type: "", answer: "" })
   );
 
   const handleChange = (index, answer) => {
@@ -18,7 +18,7 @@ const TestForm = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 p-6 bg-white rounded-lg">
+    <form onSubmit={handleSubmit} className="space-y-6 p-6 rounded-lg ">
       {questions.map((q, index) => (
         <div key={q.id} className="mb-6">
           <p className="font-semibold text-lg mb-3">{q.question}</p>
@@ -27,8 +27,8 @@ const TestForm = ({ onSubmit }) => {
               <label
                 key={i}
                 className={`block p-3 border rounded-lg cursor-pointer transition-colors duration-300 ${
-                  answers[index]?.answer === option ? "bg-gray-100" : ""
-                } hover:bg-gray-100`}
+                  answers[index]?.answer === option ? "bg-slate-900" : ""
+                } hover:bg-slate-900`}
               >
                 <input
                   type="radio"
@@ -46,7 +46,7 @@ const TestForm = ({ onSubmit }) => {
       ))}
       <button
         type="submit"
-        className="w-full bg-primary-color text-black py-3 rounded-lg font-semibold hover:bg-primary-dark transition duration-300 hover:text-[#FF5A5F]"
+        className="w-full bg-primary-color text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition duration-300 hover:text-[#E98934]"
       >
         제출하기
       </button>
