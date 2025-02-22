@@ -1,26 +1,13 @@
 import React from "react";
 import AuthForm from "../components/AuthForm";
-import { register } from "../api/auth";
-import { Link, useNavigate } from "react-router-dom";
-import { ROUTES } from "../constants/routes";
-import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import useUserActions from "../hooks/useUserActions";
 
 const Signup = () => {
-  const navigate = useNavigate();
+  const { signupHandler } = useUserActions();
 
   const handleSignup = async (userData) => {
-    console.log("userData:", userData);
-    try {
-      const res = await register(userData);
-      console.log(res);
-      if (res.success) {
-        toast.success(res.message);
-        navigate(ROUTES.LOGIN);
-      }
-    } catch (error) {
-      // console.log(error);
-      toast.error(error.response.data.message);
-    }
+    await signupHandler(userData);
   };
 
   return (

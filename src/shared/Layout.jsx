@@ -1,14 +1,17 @@
 import React, { useContext } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
+import { ROUTES } from "../constants/routes";
 
 const Layout = () => {
   const { isAuthenticated, logoutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logoutUser();
     toast.success("로그아웃되었습니다.");
+    navigate(ROUTES.HOME);
   };
 
   return (

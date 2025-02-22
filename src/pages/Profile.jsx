@@ -1,44 +1,25 @@
-import React, { useContext, useEffect, useState } from "react";
-import { getUserProfile, updateProfile } from "../api/auth";
+import React, { useContext, useState, useEffect } from "react";
+import { updateProfile } from "../api/auth";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
+import useUserActions from "../hooks/useUserActions";
 
 const Profile = () => {
-  // const [nickname, setNickname] = useState(user?.nickname || "");
-  const [nickname, setNickname] = useState(""); //임시
-  const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
-  const accessToken = localStorage.getItem("accessToken");
+  const { user } = useContext(AuthContext);
+  const [nickname, setNickname] = useState(user?.nickname || "");
+  const { updateProfileHandler } = useUserActions();
+
+  useEffect(() => {
+    setNickname(user?.nickname || "");
+  }, [user]);
 
   const handleNicknameChange = (e) => {
     setNickname(e.target.value);
   };
 
-  useEffect(() => {
-    const fetchUserProfile = async () => {
-      try {
-        const { nickname } = await getUserProfile(accessToken);
-        // console.log(res);
-        setNickname(nickname);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-
-    fetchUserProfile();
-  }, [accessToken]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      //바꿀 닉네임을 서버에 보내고 인증된 사용자인지는 accessToken으로 확인하여 성공하면 결과 반환
-      const { data } = await updateProfile({ nickname }, accessToken);
-      // console.log(data);
-      toast.success(`'${data.nickname}'(으)로 닉네임이 변경되었습니다.`);
-    } catch (error) {
-      console.log(error.response.data.message);
-      toast.error(error.response.data.message);
-    }
+    await updateProfileHandler(nickname);
   };
 
   return (
