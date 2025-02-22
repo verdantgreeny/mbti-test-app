@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "./Button";
 
 // 회원가입인지 로그인인지 구분하기 위해 mode 를 props 로 받습니다.
 // onSubmit 도 회원가입과 로그인 페이지에서 각각 구현을 하고 props 로 넘겨줄 겁니다.
@@ -56,12 +57,9 @@ const AuthForm = ({ mode, onSubmit }) => {
           className="w-full p-3 border rounded-lg bg-inherit"
         />
       )}
-      <button
-        type="submit"
-        className="w-full px-6 py-3 bg-[#1C5952] text-white shadow-md border rounded-full hover:bg-[#E98934] transition"
-      >
+      <Button type="submit" className="w-full bg-[#1C5952] hover:bg-[#E98934]">
         {mode === "login" ? "로그인" : "회원가입"}
-      </button>
+      </Button>
     </form>
   );
 };

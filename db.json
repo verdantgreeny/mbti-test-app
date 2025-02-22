@@ -1,22 +1,6 @@
 {
   "testResults": [
     {
-      "id": "36e4",
-      "nickname": "닉네임 수정좀 해봅니다.",
-      "result": "ESTJ",
-      "visibility": true,
-      "date": "2025-02-22",
-      "userId": "mbtitest"
-    },
-    {
-      "id": "0caa",
-      "nickname": "닉네임 수정좀 해봅니다.",
-      "result": "ESTJ",
-      "visibility": true,
-      "date": "2025-02-22",
-      "userId": "mbtitest"
-    },
-    {
       "id": "0164",
       "nickname": "mbtitest05",
       "result": "ESTJ",
@@ -34,6 +18,14 @@
     },
     {
       "id": "140a",
+      "nickname": "마지막 수정이었으면",
+      "result": "ESTJ",
+      "visibility": true,
+      "date": "2025-02-22",
+      "userId": "mbtitest"
+    },
+    {
+      "id": "9b11",
       "nickname": "마지막 수정이었으면",
       "result": "ESTJ",
       "visibility": true,

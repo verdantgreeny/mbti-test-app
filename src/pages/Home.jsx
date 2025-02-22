@@ -10,7 +10,11 @@ const Home = () => {
         className="max-w-md hover:animate-wiggle transition-transform duration-2000"
       />
       <div className="flex flex-col justify-center items-center min-h-full text-center">
-        <img src="../../public/logo.png" alt="홈화면 title" className="w-56 mb-6" />
+        <img
+          src="../../public/logo.png"
+          alt="홈화면 title"
+          className="w-56 mb-6"
+        />
 
         <h3 className="text-2xl text-gray-300 mb-10">
           무한한 MBTI 조합과 가능성

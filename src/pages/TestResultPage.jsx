@@ -1,64 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
-import {
-  deleteTestResult,
-  getTestResults,
-  updateTestResultVisibility,
-} from "../api/testResults";
+import React, { useContext } from "react";
 import { mbtiDescriptions } from "../utils/mbtiCalculator";
 import { AuthContext } from "../context/AuthContext";
-import { toast } from "react-toastify";
-
+import useTestResults from "../hooks/useTestResults";
+import Button from "../components/Button";
 
 const TestResultPage = () => {
-  const [results, setResults] = useState([]);
   const { user } = useContext(AuthContext);
-
-
-  useEffect(() => {
-    const fetchResults = async () => {
-      try {
-        const data = await getTestResults();
-        setResults(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchResults();
-  }, []);
-
-  const handleDelete = async (id) => {
-    try {
-      await deleteTestResult(id);
-      // 삭제된 결과를 상태에서 제거
-      setResults((prevResults) => prevResults.filter((res) => res.id !== id));
-      toast.success("삭제 성공");
-    } catch (error) {
-      console.log("삭제 실패:", error);
-      toast.error("삭제 실패");
-    }
-  };
-
-  const handleToggleVisibility = async (id, currentVisibility) => {
-    try {
-      const updated = await updateTestResultVisibility(id, !currentVisibility);
-      setResults((prevResults) =>
-        prevResults
-          .map((res) =>
-            res.id === id ? { ...res, visibility: updated.visibility } : res
-          )
-          .filter((res) => res.visibility)
-      );
-      // console.log(updated);
-      toast.success(
-        `${updated.nickname}님의 결과가 ${
-          updated.visibility ? "공개" : "비공개"
-        } 처리 되었습니다. `
-      );
-    } catch (error) {
-      console.log(error);
-      toast.error("공개여부 전환 실패");
-    }
-  };
+  const { results, handleDelete, handleToggleVisibility } = useTestResults();
 
   if (!results.length)
     return (
@@ -91,31 +39,31 @@ const TestResultPage = () => {
               <hr className="my-6" />
               <p className="text-lg font-semibold text-center">{res.result}</p>
               <p className="text-md">{mbtiDescriptions[res.result]}</p>
-              {/* 버튼은 현재 사용자 소유의 결과에 대해서만 표시 */}
+
               {res.userId === user.id && (
                 <div className="flex justify-end space-x-3 mt-2">
-                  <button
+                  <Button
                     onClick={() => handleDelete(res.id)}
-                    className={`text-sm px-10 py-2 border border-gray-300 ${
+                    className={
                       index % 2 === 0
                         ? "bg-[#E98934] hover:bg-[#1C5952]"
                         : "bg-[#1C5952] hover:bg-[#E98934]"
-                    } rounded-full transition duration-300`}
+                    }
                   >
                     삭제
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     onClick={() =>
                       handleToggleVisibility(res.id, res.visibility)
                     }
-                    className={`text-sm px-10 py-2 border border-gray-300 ${
+                    className={
                       index % 2 === 0
                         ? "bg-[#E98934] hover:bg-[#1C5952]"
                         : "bg-[#1C5952] hover:bg-[#E98934]"
-                    } rounded-full transition duration-300`}
+                    }
                   >
                     {res.visibility ? "비공개" : "공개"}
-                  </button>
+                  </Button>
                 </div>
               )}
             </div>

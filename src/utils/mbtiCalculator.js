@@ -59,11 +59,3 @@ export const calculateMBTI = (answers) => {
   return result;
 };
 
-// 사용 예시:
-const answers = [
-  { type: "E/I", answer: "E" },
-  { type: "S/N", answer: "S" },
-  { type: "T/F", answer: "T" },
-  { type: "J/P", answer: "J" },
-  // 추가 질문들...
-];

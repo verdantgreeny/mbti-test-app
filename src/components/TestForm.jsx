@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { questions } from "../data/questions";
+import { toast } from "react-toastify";
+import Button from "./Button";
 
 const TestForm = ({ onSubmit }) => {
   const [answers, setAnswers] = useState(
@@ -14,6 +16,12 @@ const TestForm = ({ onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // 모든 질문에 답을 하지 않을 경우 리턴!
+    if (answers.some((a) => a.answer === "")) {
+      toast.error("모든 질문에 답해주세요.");
+      return;
+    }
     onSubmit(answers);
   };
 
@@ -44,12 +52,9 @@ const TestForm = ({ onSubmit }) => {
           </div>
         </div>
       ))}
-      <button
-        type="submit"
-        className="w-full bg-primary-color text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition duration-300 hover:text-[#E98934]"
-      >
+      <Button type="submit" className="w-full hover:bg-white hover:text-black">
         제출하기
-      </button>
+      </Button>
     </form>
   );
 };

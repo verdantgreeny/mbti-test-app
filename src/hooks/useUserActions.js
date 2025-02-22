@@ -1,4 +1,3 @@
-// src/hooks/useAuthActions.js
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -83,11 +82,37 @@ const useUserActions = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await deleteTestResult(id);
+      toast.success("삭제 성공");
+    } catch (error) {
+      console.log("삭제 실패:", error);
+      toast.error("삭제 실패");
+    }
+  };
+
+  const handleToggleVisibility = async (id, currentVisibility) => {
+    try {
+      const updated = await updateTestResultVisibility(id, !currentVisibility);
+      toast.success(
+        `${updated.nickname}님의 결과가 ${
+          updated.visibility ? "공개" : "비공개"
+        } 처리 되었습니다. `
+      );
+    } catch (error) {
+      console.log(error);
+      toast.error("공개여부 전환 실패");
+    }
+  };
+
   return {
     loginHandler,
     signupHandler,
     updateProfileHandler,
     testSubmitHandler,
+    handleDelete,
+    handleToggleVisibility,
   };
 };
 
