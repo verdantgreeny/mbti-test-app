@@ -25,7 +25,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
    const res =  await updateProfileHandler(nickname);
-   console.log(res);
+  //  console.log(res);
   };
 
   const fetchTestResults = async () => {

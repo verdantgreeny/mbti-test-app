@@ -40,7 +40,7 @@ const TestResultPage = () => {
               <p className="text-lg font-semibold text-center">{res.result}</p>
               <p className="text-md">{mbtiDescriptions[res.result]}</p>
 
-              {res.userId === user.id && (
+              {user && res.userId === user.id && (
                 <div className="flex justify-end space-x-3 mt-2">
                   <Button
                     onClick={() => handleDelete(res.id)}

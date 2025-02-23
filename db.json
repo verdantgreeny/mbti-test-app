@@ -2,7 +2,7 @@
   "testResults": [
     {
       "id": "fa53",
-      "nickname": "김준현 튜터님",
+      "nickname": "김준현 튜터",
       "result": "INFP",
       "visibility": false,
       "date": "2025-02-23",
@@ -10,7 +10,7 @@
     },
     {
       "id": "d683",
-      "nickname": "최원장 튜터님",
+      "nickname": "최원장 튜터",
       "result": "ESFJ",
       "visibility": true,
       "date": "2025-02-23 11:13:41",
@@ -18,7 +18,7 @@
     },
     {
       "id": "165d",
-      "nickname": "최원장 튜터님",
+      "nickname": "최원장 튜터",
       "result": "ESTJ",
       "visibility": false,
       "date": "2025-02-23 11:14:13",
@@ -26,7 +26,7 @@
     },
     {
       "id": "ec29",
-      "nickname": "최원장 튜터님",
+      "nickname": "최원장 튜터",
       "result": "ESFP",
       "visibility": true,
       "date": "2025-02-23 11:15:07",
@@ -34,10 +34,34 @@
     },
     {
       "id": "9c4a",
-      "nickname": "김준현 튜터님",
+      "nickname": "김준현 튜터",
       "result": "ISTJ",
       "visibility": true,
       "date": "2025-02-23 11:15:48",
+      "userId": "mmbbttii"
+    },
+    {
+      "id": "8a4b",
+      "nickname": "김병연 튜터",
+      "result": "INFP",
+      "visibility": true,
+      "date": "2025-02-23 11:19:26",
+      "userId": "mbtitest05"
+    },
+    {
+      "id": "6bef",
+      "nickname": "최원장 튜터",
+      "result": "ESTJ",
+      "visibility": true,
+      "date": "2025-02-23 11:21:55",
+      "userId": "mbtitest"
+    },
+    {
+      "id": "1644",
+      "nickname": "김준현 튜터님",
+      "result": "ESFJ",
+      "visibility": true,
+      "date": "2025-02-23 11:22:45",
       "userId": "mmbbttii"
     }
   ]
