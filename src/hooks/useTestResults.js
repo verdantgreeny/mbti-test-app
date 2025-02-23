@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
-import { getTestResults, deleteTestResult, updateTestResultVisibility } from "../api/testResults";
+import {
+  getTestResults,
+  deleteTestResult,
+  updateTestResultVisibility,
+} from "../api/testResults";
 import { toast } from "react-toastify";
 
 const useTestResults = () => {
@@ -9,7 +13,7 @@ const useTestResults = () => {
     const fetchResults = async () => {
       try {
         const data = await getTestResults();
-        setResults(data);
+        setResults(data.filter((res) => res.visibility));
       } catch (error) {
         console.log(error);
       }
@@ -38,10 +42,9 @@ const useTestResults = () => {
           )
           .filter((res) => res.visibility)
       );
+
       toast.success(
-        `${updated.nickname}님의 결과가 ${
-          updated.visibility ? "공개" : "비공개"
-        } 처리 되었습니다. `
+        `결과가 ${updated.visibility ? "공개" : "비공개"}되었습니다.`
       );
     } catch (error) {
       console.log(error);
