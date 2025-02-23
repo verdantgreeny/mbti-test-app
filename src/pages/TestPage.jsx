@@ -27,6 +27,19 @@ const TestPage = () => {
     navigate(ROUTES.TEST_RESULT_PAGE);
   };
 
+  const handleShareResult = async () => {
+    if (!result) return;
+
+    const shareText = `${user.nickname}님의 MBTI 결과는 ${result}입니다!\n\n${mbtiDescriptions[result]} \n\n 나도 해보기 ===> ${window.location.href}`;
+
+    try {
+      await navigator.clipboard.writeText(shareText); // 클립보드에 텍스트를 복사하는 기능
+      toast.success("결과가 클립보드에 복사되었습니다.");
+    } catch (error) {
+      toast.error("복사 실패했씁니다.");
+    }
+  };
+
   return (
     <div className="w-full flex flex-col items-center justify-center text-white">
       <div className="rounded-lg p-8 max-w-2xl w-full h-full shadow-lg">
@@ -45,7 +58,7 @@ const TestPage = () => {
             </h1>
             <div className="flex flex-col items-center space-y-4 p-6 border rounded-lg shadow-md">
               <img
-                src="https://cdn.prod.website-files.com/6467b97fbfd703a1664963fb/64948b7cd63ee9b7d47f6873_Star.png"
+                src="../../public/flower3.png"
                 alt="결과 아이콘"
                 className="w-16 h-16 object-cover transform transition-transform duration-300 hover:scale-110"
               />
@@ -53,6 +66,13 @@ const TestPage = () => {
                 {mbtiDescriptions[result] ||
                   "해당 성격 유형에 대한 설명이 없습니다."}
               </p>
+
+              <Button
+                onClick={handleShareResult}
+                className="w-full bg-[#E98934] hover:bg-[#1C5952] text-white"
+              >
+                결과 공유하기
+              </Button>
 
               <Button
                 onClick={handleNavigateToResults}
