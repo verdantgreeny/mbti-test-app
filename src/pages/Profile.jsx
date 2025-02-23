@@ -17,6 +17,15 @@ const Profile = () => {
     fetchTestResults();
   }, [user]);
 
+  const handleNicknameChange = (e) => {
+    setNickname(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await updateProfileHandler(nickname);
+  };
+
   const fetchTestResults = async () => {
     try {
       const data = await getTestResults(user.id);
@@ -27,16 +36,19 @@ const Profile = () => {
     }
   };
 
-  const handleNicknameChange = (e) => {
-    setNickname(e.target.value);
+  const handleDeleteUserResult = async (id) => {
+    await handleDelete(id);
+    await fetchTestResults();
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await updateProfileHandler(nickname);
+  const handleToggleUserResult = async (id, currentVisibility) => {
+    await handleToggleVisibility(id, currentVisibility);
+    setResults((prev) =>
+      prev.map((res) =>
+        res.id === id ? { ...res, visibility: !currentVisibility } : res
+      )
+    );
   };
-
-
 
   return (
     <div className="flex flex-col items-center justify-center min-h-full text-white">
@@ -93,7 +105,7 @@ const Profile = () => {
                     {res.userId === user.id && (
                       <div className="flex justify-end space-x-3 mt-2">
                         <Button
-                          onClick={() => handleDelete(res.id)}
+                          onClick={() => handleDeleteUserResult(res.id)}
                           className={
                             index % 2 === 0
                               ? "bg-[#E98934] hover:bg-[#1C5952]"
@@ -104,7 +116,7 @@ const Profile = () => {
                         </Button>
                         <Button
                           onClick={() =>
-                            handleToggleVisibility(res.id, res.visibility)
+                            handleToggleUserResult(res.id, res.visibility)
                           }
                           className={
                             index % 2 === 0

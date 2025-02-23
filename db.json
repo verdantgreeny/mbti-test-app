@@ -28,15 +28,7 @@
       "id": "447d",
       "nickname": "프로필 수정",
       "result": "ESTJ",
-      "visibility": true,
-      "date": "2025-02-22",
-      "userId": "mbtitest"
-    },
-    {
-      "id": "fa19",
-      "nickname": "프로필 수정",
-      "result": "ESTJ",
-      "visibility": true,
+      "visibility": false,
       "date": "2025-02-22",
       "userId": "mbtitest"
     },
