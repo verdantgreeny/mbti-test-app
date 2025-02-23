@@ -3,6 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../constants/routes";
 import { toast } from "react-toastify";
+import { useQuery } from "@tanstack/react-query";
 
 const ProtectedRoutes = ({ element, isLogin }) => {
   const { isAuthenticated } = useContext(AuthContext);
