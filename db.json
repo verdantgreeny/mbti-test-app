@@ -49,14 +49,6 @@
       "userId": "mbtitest05"
     },
     {
-      "id": "6bef",
-      "nickname": "최원장 튜터",
-      "result": "ESTJ",
-      "visibility": true,
-      "date": "2025-02-23 11:21:55",
-      "userId": "mbtitest"
-    },
-    {
       "id": "1644",
       "nickname": "김준현 튜터님",
       "result": "ESFJ",
@@ -87,6 +79,14 @@
       "visibility": true,
       "date": "2025-02-23 11:31:48",
       "userId": "mbtitest08"
+    },
+    {
+      "id": "be59",
+      "nickname": "최원장 튜터",
+      "result": "INFP",
+      "visibility": true,
+      "date": "2025-02-23 13:02:28",
+      "userId": "mbtitest"
     }
   ]
 }
