@@ -7,11 +7,12 @@ import { ROUTES } from "../constants/routes";
 const Layout = () => {
   const { isAuthenticated, logoutUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { HOME, LOGIN, SIGNUP, PROFILE, TEST_PAGE, TEST_RESULT_PAGE } = ROUTES;
 
   const handleLogout = () => {
     logoutUser();
     toast.success("로그아웃되었습니다.");
-    navigate(ROUTES.HOME);
+    navigate(HOME);
   };
 
   return (
@@ -21,32 +22,32 @@ const Layout = () => {
         {/* <h1 className="text-xl font-bold">INF∞</h1> */}
         <img
           src="../../public/logo.png"
-          alt="레이아웃 로고"
+          alt="레이아웃 INF∞ 로고"
           className="w-24 hover:animate-wiggle transition-transform duration-2000"
         />
         <div className="space-x-6">
           {/* 로그인 여부에 따라 링크 조건부 렌더링 */}
-          <Link to="/" className="hover:underline">
+          <Link to={HOME} className="hover:underline">
             Home
           </Link>
           {!isAuthenticated ? (
             <>
-              <Link to="/login" className="hover:underline">
+              <Link to={LOGIN} className="hover:underline">
                 Login
               </Link>
-              <Link to="/signup" className="hover:underline">
+              <Link to={SIGNUP} className="hover:underline">
                 Signup
               </Link>
             </>
           ) : (
             <>
-              <Link to="/profile" className="hover:underline">
+              <Link to={PROFILE} className="hover:underline">
                 Profile
               </Link>
-              <Link to="/test-page" className="hover:underline">
+              <Link to={TEST_PAGE} className="hover:underline">
                 Test Page
               </Link>
-              <Link to="/test-result-page" className="hover:underline">
+              <Link to={TEST_RESULT_PAGE} className="hover:underline">
                 Test Results
               </Link>
               <button

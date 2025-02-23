@@ -2,9 +2,11 @@ import React from "react";
 import AuthForm from "../components/AuthForm";
 import { Link } from "react-router-dom";
 import useUserActions from "../hooks/useUserActions";
+import { ROUTES } from "../constants/routes";
 
 const Login = () => {
   const { loginHandler } = useUserActions();
+  const { SIGNUP } = ROUTES;
 
   const handleLogin = async (userData) => {
     await loginHandler(userData);
@@ -18,7 +20,7 @@ const Login = () => {
         <div className="text-center mt-6">
           <p>
             계정이 없으신가요?{" "}
-            <Link to="/signup" className="text-[#E98934] hover:underline">
+            <Link to={SIGNUP} className="text-[#E98934] hover:underline">
               회원가입
             </Link>
           </p>

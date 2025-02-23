@@ -19,7 +19,8 @@ const useTestResults = () => {
             .sort((a, b) => new Date(b.date) - new Date(a.date))
         );
       } catch (error) {
-        console.log(error);
+        // console.log(error);
+        toast.error(error);
       }
     };
     fetchResults();

@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ROUTES } from "../constants/routes";
 
 const Home = () => {
+  const { TEST_PAGE } = ROUTES;
   return (
     <div className="flex flex-row items-center justify-center min-h-full text-white">
       <img
@@ -21,7 +23,7 @@ const Home = () => {
         </h3>
 
         <Link
-          to="/test-page"
+          to={TEST_PAGE}
           className="px-6 py-3 bg-[#1C5952] text-white border border-gray-300 rounded-full hover:bg-[#E98934] transition"
         >
           MBTI 테스트 시작하기

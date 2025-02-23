@@ -63,6 +63,30 @@
       "visibility": true,
       "date": "2025-02-23 11:22:45",
       "userId": "mmbbttii"
+    },
+    {
+      "id": "93f4",
+      "nickname": "MBTI 더이상..",
+      "result": "ESFJ",
+      "visibility": true,
+      "date": "2025-02-23 11:30:03",
+      "userId": "mbtitest08"
+    },
+    {
+      "id": "2025",
+      "nickname": "MBTI 더이상..",
+      "result": "ESTJ",
+      "visibility": false,
+      "date": "2025-02-23 11:31:15",
+      "userId": "mbtitest08"
+    },
+    {
+      "id": "cc98",
+      "nickname": "프로필 수정한다?",
+      "result": "INFP",
+      "visibility": true,
+      "date": "2025-02-23 11:31:48",
+      "userId": "mbtitest08"
     }
   ]
 }

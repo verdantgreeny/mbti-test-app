@@ -11,29 +11,30 @@ import Layout from "./Layout";
 import { ROUTES } from "../constants/routes";
 
 const Router = () => {
+  const { HOME, LOGIN, SIGNUP, PROFILE, TEST_PAGE, TEST_RESULT_PAGE } = ROUTES;
   const router = createBrowserRouter([
     {
       element: <Layout />,
       children: [
-        { path: ROUTES.HOME, element: <Home /> },
+        { path: HOME, element: <Home /> },
         {
-          path: ROUTES.LOGIN,
+          path: LOGIN,
           element: <ProtectedRoutes element={<Login />} isLogin={true} />,
         },
         {
-          path: ROUTES.SIGNUP,
+          path: SIGNUP,
           element: <ProtectedRoutes element={<Signup />} isLogin={true} />,
         },
         {
-          path: ROUTES.PROFILE,
+          path: PROFILE,
           element: <ProtectedRoutes element={<Profile />} isLogin={false} />,
         },
         {
-          path: ROUTES.TEST_PAGE,
+          path: TEST_PAGE,
           element: <ProtectedRoutes element={<TestPage />} isLogin={false} />,
         },
         {
-          path: ROUTES.TEST_RESULT_PAGE,
+          path: TEST_RESULT_PAGE,
           element: (
             <ProtectedRoutes element={<TestResultPage />} isLogin={false} />
           ),

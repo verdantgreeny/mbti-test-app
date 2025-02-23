@@ -10,6 +10,7 @@ import { AuthContext } from "../context/AuthContext";
 const useUserActions = () => {
   const { authenticateUser, user, accessToken } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { LOGIN } = ROUTES;
 
   // 로그인 핸들러
   const loginHandler = async (userData) => {
@@ -36,7 +37,7 @@ const useUserActions = () => {
       const res = await register(userData);
       if (res.success) {
         toast.success(res.message);
-        navigate(ROUTES.LOGIN);
+        navigate(LOGIN);
       }
     } catch (error) {
       //console.log(error);
