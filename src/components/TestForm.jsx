@@ -17,11 +17,11 @@ const TestForm = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // // 모든 질문에 답을 하지 않을 경우 리턴!
-    // if (answers.some((a) => a.answer === "")) {
-    //   toast.error("모든 질문에 답해주세요.");
-    //   return;
-    // }
+    // 모든 질문에 답을 하지 않을 경우 리턴!
+    if (answers.some((a) => a.answer === "")) {
+      toast.error("모든 질문에 답해주세요.");
+      return;
+    }
     onSubmit(answers);
   };
 

@@ -4,6 +4,7 @@ import useUserActions from "../hooks/useUserActions";
 import { getTestResults } from "../api/testResults";
 import Button from "../components/Button";
 import useTestResults from "../hooks/useTestResults";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -32,7 +33,8 @@ const Profile = () => {
       const userResults = data.filter((res) => res.userId === user.id); //유저가 쓴 글만 가져오기
       setResults(userResults);
     } catch (error) {
-      console.error("테스트 결과를 가져오는 데 실패했습니다.", error);
+      // console.log(error);
+      toast.error("테스트 결과를 불러오지 못했습니다.");
     }
   };
 

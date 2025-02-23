@@ -28,17 +28,17 @@
       "id": "447d",
       "nickname": "프로필 수정",
       "result": "ESTJ",
-      "visibility": false,
+      "visibility": true,
       "date": "2025-02-22",
       "userId": "mbtitest"
     },
     {
-      "id": "33b9",
-      "nickname": "",
-      "result": "ESTJ",
+      "id": "8f1e",
+      "nickname": "프로필 수정하면?",
+      "result": "INTJ",
       "visibility": true,
       "date": "2025-02-23",
-      "userId": "unknown"
+      "userId": "mbtitest"
     }
   ]
 }

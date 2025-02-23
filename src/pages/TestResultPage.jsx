@@ -29,8 +29,8 @@ const TestResultPage = () => {
             <div className="flex flex-col space-y-2 w-full">
               <p className="text-xl font-medium flex items-center justify-between">
                 <img
-                  src="https://cdn.prod.website-files.com/6467b97fbfd703a1664963fb/64948b7cd63ee9b7d47f6873_Star.png"
-                  alt="스타"
+                  src="../../public/flower3.png"
+                  alt="꽃"
                   className="w-12 h-12 object-cover transform transition-transform duration-300 hover:scale-110"
                 />
                 "{res.nickname}"님의 결과
