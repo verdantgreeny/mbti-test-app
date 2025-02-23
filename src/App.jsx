@@ -1,4 +1,3 @@
-import "./App.css";
 import Router from "./shared/Router";
 import { AuthProvider } from "./context/AuthContext";
 import { ToastContainer } from "react-toastify";

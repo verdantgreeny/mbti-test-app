@@ -6,6 +6,7 @@ import { ROUTES } from "../constants/routes";
 import { AuthContext } from "../context/AuthContext";
 import useUserActions from "../hooks/useUserActions";
 import Button from "../components/Button";
+import { toast } from "react-toastify";
 
 const TestPage = () => {
   const [result, setResult] = useState(null);
@@ -18,7 +19,7 @@ const TestPage = () => {
     if (res) {
       setResult(res.result);
     } else {
-      console.error("테스트 결과가 없습니다.");
+      toast.error("테스트 결과가 없습니다.");
     }
   };
 
