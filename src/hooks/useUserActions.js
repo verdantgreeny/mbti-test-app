@@ -71,7 +71,7 @@ const useUserActions = () => {
         nickname: user?.nickname || "",
         result: mbtiResult,
         visibility: true,
-        date: new Date().toISOString().split("T")[0], // yyyy-MM-dd 형식
+        date: new Date().toISOString().replace("T", " ").split(".")[0], // yyyy-MM-dd 형식 + 시간까지도 표시
         userId: user?.id || "unknown",
       };
       await createTestResult(resultData);

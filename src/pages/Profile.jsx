@@ -31,7 +31,7 @@ const Profile = () => {
   const fetchTestResults = async () => {
     try {
       const data = await getTestResults(user.id);
-      const userResults = data.filter((res) => res.userId === user.id); //유저가 쓴 글만 가져오기
+      const userResults = data.filter((res) => res.userId === user.id).sort((a, b) => new Date(b.date) - new Date(a.date)); //유저가 쓴 글만 가져오기
       setResults(userResults);
     } catch (error) {
       // console.log(error);

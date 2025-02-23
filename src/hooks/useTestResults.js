@@ -13,7 +13,11 @@ const useTestResults = () => {
     const fetchResults = async () => {
       try {
         const data = await getTestResults();
-        setResults(data.filter((res) => res.visibility));
+        setResults(
+          data
+            .filter((res) => res.visibility)
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+        );
       } catch (error) {
         console.log(error);
       }
