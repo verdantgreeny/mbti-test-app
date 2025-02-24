@@ -2,13 +2,11 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login, register, updateProfile } from "../api/auth";
-import { createTestResult, deleteTestResult } from "../api/testResults";
-import { calculateMBTI } from "../utils/mbtiCalculator";
 import { ROUTES } from "../constants/routes";
 import { AuthContext } from "../context/AuthContext";
 
 const useUserActions = () => {
-  const { authenticateUser, user, accessToken } = useContext(AuthContext);
+  const { authenticateUser, accessToken } = useContext(AuthContext);
   const navigate = useNavigate();
   const { LOGIN } = ROUTES;
 

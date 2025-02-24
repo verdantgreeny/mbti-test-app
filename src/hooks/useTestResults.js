@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import {
   getTestResults,
   deleteTestResult,
@@ -11,8 +11,7 @@ import { calculateMBTI } from "../utils/mbtiCalculator";
 import { AuthContext } from "../context/AuthContext";
 
 const useTestResults = () => {
-  // const [results, setResults] = useState([]);
-  const { user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const queryClient = useQueryClient();
 
   //    // MBTI 테스트 제출 핸들러
@@ -85,6 +84,9 @@ const useTestResults = () => {
       data
         .filter((res) => res.visibility)
         .sort((a, b) => new Date(b.date) - new Date(a.date)),
+    onError: (error) => {
+      toast.error(error);
+    },
   });
 
   // const handleDelete = async (id) => {
@@ -103,6 +105,9 @@ const useTestResults = () => {
     onSuccess: () => {
       queryClient.invalidateQueries(["testResults"]);
       toast.success("삭제 성공");
+    },
+    onError: (error) => {
+      toast.error(error);
     },
   });
 
@@ -141,6 +146,9 @@ const useTestResults = () => {
       toast.success(
         `결과가 ${updated.visibility ? "공개" : "비공개"}되었습니다.`
       );
+    },
+    onError: (error) => {
+      toast.error(error);
     },
   });
 
