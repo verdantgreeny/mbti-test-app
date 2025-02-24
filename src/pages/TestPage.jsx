@@ -7,15 +7,18 @@ import { AuthContext } from "../context/AuthContext";
 import useUserActions from "../hooks/useUserActions";
 import Button from "../components/Button";
 import { toast } from "react-toastify";
+import useTestResults from "../hooks/useTestResults";
 
 const TestPage = () => {
   const [result, setResult] = useState(null);
   const { user } = useContext(AuthContext);
-  const { testSubmitHandler } = useUserActions();
   const navigate = useNavigate();
 
+  const { testSubmitMutation } =
+    useTestResults();
+
   const handleTestSubmit = async (answers) => {
-    const res = await testSubmitHandler(answers);
+    const res = await testSubmitMutation.mutateAsync(answers);
     if (res) {
       setResult(res.result);
     } else {

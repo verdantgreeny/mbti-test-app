@@ -1,15 +1,64 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   getTestResults,
   deleteTestResult,
   updateTestResultVisibility,
+  createTestResult,
 } from "../api/testResults";
 import { toast } from "react-toastify";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { calculateMBTI } from "../utils/mbtiCalculator";
+import { AuthContext } from "../context/AuthContext";
 
 const useTestResults = () => {
   // const [results, setResults] = useState([]);
+  const { user} = useContext(AuthContext);
   const queryClient = useQueryClient();
+
+  //    // MBTI 테스트 제출 핸들러
+  //     const testSubmitHandler = async (answers, setResult) => {
+  //       try {
+  //         const mbtiResult = calculateMBTI(answers);
+  //         // console.log(`MBTI 결과: ${mbtiResult}`);
+  //         // console.log(mbtiDescriptions[mbtiResult]);
+  //         const resultData = {
+  //           nickname: user?.nickname || "",
+  //           result: mbtiResult,
+  //           visibility: true,
+  //           date: new Date().toISOString().replace("T", " ").split(".")[0], // yyyy-MM-dd 형식 + 시간까지도 표시
+  //           userId: user?.id || "unknown",
+  //         };
+  //         await createTestResult(resultData);
+  //         // setResult(mbtiResult);
+  //         return resultData;
+  //       } catch (error) {
+  //         // console.log(error);
+  //         toast.error(error.response?.data?.message || error.message);
+  //         return null;
+  //       }
+  //     };
+
+  const testSubmitMutation = useMutation({
+    mutationFn: async (answers) => {
+      const mbtiResult = calculateMBTI(answers);
+      const resultData = {
+        nickname: user?.nickname || "",
+        result: mbtiResult,
+        visibility: true,
+        date: new Date().toISOString().replace("T", " ").split(".")[0],
+        userId: user?.id || "unknown",
+      };
+      await createTestResult(resultData);
+      return resultData;
+    },
+    onSuccess: (newResult) => {
+      queryClient.invalidateQueries(["testResults"]); // 캐시 무효화
+      toast.success(`테스트 결과 (${newResult.result})가 저장되었습니다.`);
+    },
+    onError: (error) => {
+      toast.error(error.response?.data?.message || error.message);
+    },
+  });
 
   // useEffect(() => {
   //   const fetchResults = async () => {
@@ -97,6 +146,7 @@ const useTestResults = () => {
 
   return {
     results,
+    testSubmitMutation,
     deleteMutation,
     toggleVisibilityMutation,
   };
