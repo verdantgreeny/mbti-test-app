@@ -2,13 +2,11 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login, register, updateProfile } from "../api/auth";
-import { createTestResult, deleteTestResult } from "../api/testResults";
-import { calculateMBTI } from "../utils/mbtiCalculator";
 import { ROUTES } from "../constants/routes";
 import { AuthContext } from "../context/AuthContext";
 
 const useUserActions = () => {
-  const { authenticateUser, user, accessToken } = useContext(AuthContext);
+  const { authenticateUser, accessToken } = useContext(AuthContext);
   const navigate = useNavigate();
   const { LOGIN } = ROUTES;
 
@@ -60,60 +58,11 @@ const useUserActions = () => {
     }
   };
 
-  // MBTI 테스트 제출 핸들러
-  const testSubmitHandler = async (answers, setResult) => {
-    try {
-      const mbtiResult = calculateMBTI(answers);
-      // console.log(`MBTI 결과: ${mbtiResult}`);
-      // console.log(mbtiDescriptions[mbtiResult]);
-      const resultData = {
-        nickname: user?.nickname || "",
-        result: mbtiResult,
-        visibility: true,
-        date: new Date().toISOString().replace("T", " ").split(".")[0], // yyyy-MM-dd 형식 + 시간까지도 표시
-        userId: user?.id || "unknown",
-      };
-      await createTestResult(resultData);
-      // setResult(mbtiResult);
-      return resultData;
-    } catch (error) {
-      // console.log(error);
-      toast.error(error.response?.data?.message || error.message);
-      return null;
-    }
-  };
-
-  const handleDelete = async (id) => {
-    try {
-      await deleteTestResult(id);
-      toast.success("삭제 성공");
-    } catch (error) {
-      // console.log("삭제 실패:", error);
-      toast.error("삭제 실패");
-    }
-  };
-
-  const handleToggleVisibility = async (id, currentVisibility) => {
-    try {
-      const updated = await updateTestResultVisibility(id, !currentVisibility);
-      toast.success(
-        `${updated.nickname}님의 결과가 ${
-          updated.visibility ? "공개" : "비공개"
-        } 처리 되었습니다. `
-      );
-    } catch (error) {
-      // console.log(error);
-      toast.error("공개여부 전환 실패");
-    }
-  };
 
   return {
     loginHandler,
     signupHandler,
     updateProfileHandler,
-    testSubmitHandler,
-    handleDelete,
-    handleToggleVisibility,
   };
 };
 

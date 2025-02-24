@@ -4,14 +4,14 @@ import { mbtiDescriptions } from "../utils/mbtiCalculator";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../constants/routes";
 import { AuthContext } from "../context/AuthContext";
-import useUserActions from "../hooks/useUserActions";
 import Button from "../components/Button";
 import { toast } from "react-toastify";
+import useTestResults from "../hooks/useTestResults";
 
 const TestPage = () => {
   const [result, setResult] = useState(null);
   const { user } = useContext(AuthContext);
-  const { testSubmitHandler } = useUserActions();
+  const { testSubmitHandler } = useTestResults();
   const navigate = useNavigate();
 
   const handleTestSubmit = async (answers) => {

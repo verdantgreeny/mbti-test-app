@@ -135,6 +135,14 @@
       "visibility": true,
       "date": "2025-02-24 02:01:40",
       "userId": "mbtitest08"
+    },
+    {
+      "id": "6639",
+      "nickname": "mbtitestlast(수정)",
+      "result": "ESTJ",
+      "visibility": true,
+      "date": "2025-02-24 06:51:58",
+      "userId": "mbtitestlast"
     }
   ]
 }
