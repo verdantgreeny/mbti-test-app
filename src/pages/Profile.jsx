@@ -51,11 +51,11 @@ const Profile = () => {
       id,
       visibility: !currentVisibility,
     });
-    // setResults((prev) =>
-    //   prev.map((res) =>
-    //     res.id === id ? { ...res, visibility: !currentVisibility } : res
-    //   )
-    // );
+    setResults((prev) =>
+      prev.map((res) =>
+        res.id === id ? { ...res, visibility: !currentVisibility } : res
+      )
+    );
   };
 
   return (
