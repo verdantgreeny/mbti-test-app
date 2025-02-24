@@ -59,7 +59,7 @@ const TestPage = () => {
             </h1>
             <div className="flex flex-col items-center space-y-4 p-6 border rounded-lg ">
               <img
-                src="../../public/flower3.png"
+                src="/flower3.png"
                 alt="결과 아이콘"
                 className="w-16 h-16 object-cover transform transition-transform duration-300 hover:scale-110"
               />

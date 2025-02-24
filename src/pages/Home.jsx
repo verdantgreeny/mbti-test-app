@@ -9,7 +9,7 @@ const Home = () => {
     <div className="flex flex-col md:flex-row items-center justify-center min-h-full text-white p-4">
       {/* 왼쪽 이미지 */}
       <img
-        src="../../public/flower.png"
+        src="/flower.png"
         alt="메인홈화면 이미지"
         className="w-1/3 max-w-xs hover:animate-wiggle transition-transform duration-2000"
       />
@@ -17,7 +17,7 @@ const Home = () => {
       {/* 중앙 컨텐츠 */}
       <div className="flex flex-col justify-center items-center w-full max-w-md text-center md:p-10">
         <img
-          src="../../public/logo.png"
+          src="/logo.png"
           alt="홈화면 title"
           className="w-40 sm:w-40 md:w-56 mb-4"
         />
@@ -36,7 +36,7 @@ const Home = () => {
 
       {/* 오른쪽 이미지 */}
       <img
-        src="../../public/flower2.png"
+        src="/flower2.png"
         alt="메인홈화면 이미지"
         className="w-1/3 max-w-xs hover:animate-wiggle transition-transform duration-2000 hidden md:block"
       />
