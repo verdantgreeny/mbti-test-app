@@ -15,10 +15,8 @@ const api = axios.create({
 export const getTestResults = async () => {
   try {
     const response = await api.get(TEST_RESULTS_PATH);
-    // console.log("응답 데이터:", response.data);
     return response.data;
   } catch (error) {
-    // console.error("API 요청 오류:", error);
     throw error;
   }
 };

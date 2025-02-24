@@ -17,7 +17,7 @@ const Profile = () => {
 
   // console.log(user); // 새로고침 시 null
 
-  // 새로고침 시 테스트 결과를 불러오지 못한 것에 대한 임시방편
+  // 새로고침 시 테스트 결과를 불러오지 못한 것을 해결하기 위해
   useEffect(() => {
     if (!user) {
       fetchUserProfile();
@@ -32,7 +32,6 @@ const Profile = () => {
         .sort((a, b) => new Date(b.date) - new Date(a.date));
       setResults(userResults);
     } catch (error) {
-      // console.log(error);
       toast.error("테스트 결과를 불러오지 못했습니다.");
     }
   };
@@ -48,8 +47,7 @@ const Profile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await updateProfileHandler(nickname);
-    //  console.log(res);
+    await updateProfileHandler(nickname);
   };
 
   const handleDeleteUserResult = async (id) => {

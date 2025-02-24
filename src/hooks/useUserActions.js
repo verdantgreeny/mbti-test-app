@@ -20,7 +20,6 @@ const useUserActions = () => {
       toast.success(`${nickname}님 환영합니다(홈으로 이동).`);
       navigate(ROUTES.HOME);
     } catch (error) {
-      // console.log(error)
       toast.error(error.response?.data?.message || "로그인에 실패했습니다.");
     }
   };
@@ -33,7 +32,6 @@ const useUserActions = () => {
         navigate(LOGIN);
       }
     } catch (error) {
-      //console.log(error);
       toast.error(error.response?.data?.message || "회원가입에 실패했습니다.");
     }
   };
