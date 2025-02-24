@@ -10,7 +10,6 @@ const useUserActions = () => {
   const navigate = useNavigate();
   const { LOGIN } = ROUTES;
 
-  // 로그인 핸들러
   const loginHandler = async (userData) => {
     try {
       const { accessToken, nickname } = await login(userData);
@@ -29,7 +28,6 @@ const useUserActions = () => {
     }
   };
 
-  // 회원가입 핸들러
   const signupHandler = async (userData) => {
     try {
       const res = await register(userData);
@@ -43,7 +41,6 @@ const useUserActions = () => {
     }
   };
 
-  // 프로필 업데이트 핸들러
   const updateProfileHandler = async (nickname) => {
     if (!accessToken) {
       toast.error("접근 토큰이 없습니다.");
