@@ -12,9 +12,10 @@ const useTestResults = () => {
   useEffect(() => {
     const fetchResults = async () => {
       try {
-        const data = await getTestResults();
+        const testResults = await getTestResults();
+        // console.log(testResults);
         setResults(
-          data
+          testResults
             .filter((res) => res.visibility)
             .sort((a, b) => new Date(b.date) - new Date(a.date))
         );

@@ -13,6 +13,19 @@ const Profile = () => {
   const { updateProfileHandler } = useUserActions();
   const { handleDelete, handleToggleVisibility } = useTestResults();
 
+  const fetchTestResults = async () => {
+    try {
+      const data = await getTestResults(user.id);
+      const userResults = data
+        .filter((res) => res.userId === user.id) //유저가 쓴 글만 가져오기
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
+      setResults(userResults);
+    } catch (error) {
+      // console.log(error);
+      toast.error("테스트 결과를 불러오지 못했습니다.");
+    }
+  };
+
   useEffect(() => {
     setNickname(user?.nickname || "");
     fetchTestResults();
@@ -24,19 +37,8 @@ const Profile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   const res =  await updateProfileHandler(nickname);
-  //  console.log(res);
-  };
-
-  const fetchTestResults = async () => {
-    try {
-      const data = await getTestResults(user.id);
-      const userResults = data.filter((res) => res.userId === user.id).sort((a, b) => new Date(b.date) - new Date(a.date)); //유저가 쓴 글만 가져오기
-      setResults(userResults);
-    } catch (error) {
-      // console.log(error);
-      toast.error("테스트 결과를 불러오지 못했습니다.");
-    }
+    const res = await updateProfileHandler(nickname);
+    //  console.log(res);
   };
 
   const handleDeleteUserResult = async (id) => {
@@ -68,7 +70,7 @@ const Profile = () => {
               value={nickname}
               onChange={handleNicknameChange}
               placeholder="닉네임을 입력하세요"
-              className="p-2 border border-gray-300 bg-inherit rounded-lg w-96"
+              className="p-2 border border-gray-300 bg-inherit rounded-lg w-3/5"
               required
             />
           </div>
@@ -97,11 +99,11 @@ const Profile = () => {
                   }`}
                 >
                   <div className="flex flex-col space-y-2 w-full">
-                    <p className="text-xl font-medium flex items-center justify-between">
+                    <p className=" text-xl font-medium text-center truncate">
                       "{res.nickname}"님의 결과
-                      <span className="text-xs">date: {res.date}</span>
                     </p>
                     <hr className="my-6" />
+                    <p className="text-xs text-right mb-6 ">date: {res.date}</p>
                     <p className="text-lg font-semibold text-center">
                       {res.result}
                     </p>

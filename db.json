@@ -87,6 +87,54 @@
       "visibility": true,
       "date": "2025-02-23 13:02:28",
       "userId": "mbtitest"
+    },
+    {
+      "id": "926e",
+      "nickname": "최원장 튜터",
+      "result": "INFP",
+      "visibility": false,
+      "date": "2025-02-23 13:14:48",
+      "userId": "mbtitest"
+    },
+    {
+      "id": "b8d5",
+      "nickname": "최원장 튜터",
+      "result": "ISTJ",
+      "visibility": true,
+      "date": "2025-02-23 14:01:15",
+      "userId": "mbtitest"
+    },
+    {
+      "id": "10c9",
+      "nickname": "최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터",
+      "result": "INFJ",
+      "visibility": true,
+      "date": "2025-02-23 14:24:15",
+      "userId": "mbtitest"
+    },
+    {
+      "id": "b1ec",
+      "nickname": "최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터",
+      "result": "ISTJ",
+      "visibility": false,
+      "date": "2025-02-23 14:37:30",
+      "userId": "mbtitest"
+    },
+    {
+      "id": "4dd5",
+      "nickname": "프로필 수정한다?",
+      "result": "INFJ",
+      "visibility": true,
+      "date": "2025-02-24 01:18:49",
+      "userId": "mbtitest08"
+    },
+    {
+      "id": "f0df",
+      "nickname": "테스트닉네임",
+      "result": "ESTJ",
+      "visibility": true,
+      "date": "2025-02-24 02:01:40",
+      "userId": "mbtitest08"
     }
   ]
 }
