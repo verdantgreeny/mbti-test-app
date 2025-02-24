@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login, register, updateProfile } from "../api/auth";
@@ -13,8 +12,6 @@ const useUserActions = () => {
   const loginHandler = async (userData) => {
     try {
       const { accessToken, nickname } = await login(userData);
-      // console.log(accessToken);
-      // console.log(nickname);
       if (!accessToken) {
         toast.error("토큰이 없어 로그인에 실패했습니다.");
         return;

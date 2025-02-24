@@ -9,7 +9,6 @@ const TestResultPage = () => {
   const { user } = useAuthStore();
   const { results, deleteMutation, toggleVisibilityMutation } =
     useTestResults();
-
   const { handleShareResult } = useKakaoShare(user);
 
   if (!results.length)

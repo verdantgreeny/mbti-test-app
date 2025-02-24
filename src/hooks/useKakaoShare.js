@@ -1,16 +1,13 @@
-// useKakaoShare.js
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 
 const useKakaoShare = (user) => {
   useEffect(() => {
-    // SDK가 로드되었고 아직 초기화되지 않았다면 초기화합니다.
     if (window.Kakao && !window.Kakao.isInitialized()) {
-      window.Kakao.init("1031360ce41e4d35acea6fe1571b7314"); // 자신의 앱 JavaScript 키로 교체
+      window.Kakao.init("1031360ce41e4d35acea6fe1571b7314");
     }
   }, []);
 
-  // result는 공유 함수 호출 시 인자로 받습니다.
   const handleShareResult = (result) => {
     if (!result) {
       toast.error("공유할 결과가 없습니다.");
