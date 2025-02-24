@@ -20,7 +20,7 @@ const TestResultPage = () => {
         {results.map((res, index) => (
           <li
             key={res.id}
-            className={`p-6 border rounded-lg flex items-center mx-auto w-4/5 space-x-4 ${
+            className={`p-6 rounded-lg flex items-center mx-auto w-4/5 space-x-4 ${
               index % 2 === 0
                 ? "bg-[#E98934] text-black"
                 : "bg-[#1C5952] text-white"
@@ -31,12 +31,12 @@ const TestResultPage = () => {
                 <img
                   src="../../public/flower3.png"
                   alt="꽃"
-                  className="w-12 h-12 object-cover transform transition-transform duration-300 hover:scale-110"
+                  className="w-12 h-12 object-cover transform transition-transform duration-300 hover:scale-110 mr-6"
                 />
                 "{res.nickname}"님의 결과
-                <span className="text-xs">date: {res.date}</span>
               </p>
-              <hr className="my-6" />
+              <hr className="my-10" />
+              <p className="text-xs mb-10 text-right">date: {res.date}</p>
               <p className="text-lg font-semibold text-center">{res.result}</p>
               <p className="text-md">{mbtiDescriptions[res.result]}</p>
 
