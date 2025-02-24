@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://buttercup-axiomatic-currant.glitch.me";
+const API_URL = "https://smart-fortunate-fighter.glitch.me";
 
 //테스트 결과들 가져오기
 export const getTestResults = async () => {
