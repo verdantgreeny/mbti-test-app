@@ -14,6 +14,20 @@ const useTestResults = () => {
 
   const queryClient = useQueryClient();
 
+  //데이터 조회
+  const { data: results = [] } = useQuery({
+    queryKey: ["testResults"], 
+    queryFn: getTestResults,
+    select: (data) =>
+      data
+        .filter((res) => res.visibility)
+        .sort((a, b) => new Date(b.date) - new Date(a.date)),
+    onError: (error) => {
+      toast.error(error);
+    },
+  });
+
+  //테스트 결과 제출
   const testSubmitMutation = useMutation({
     mutationFn: async (answers) => {
       const mbtiResult = calculateMBTI(answers);
@@ -28,7 +42,7 @@ const useTestResults = () => {
       return resultData;
     },
     onSuccess: (newResult) => {
-      queryClient.invalidateQueries(["testResults"]); // 캐시 무효화
+      queryClient.invalidateQueries(["testResults"]);
       toast.success(`테스트 결과 (${newResult.result})가 저장되었습니다.`);
     },
     onError: (error) => {
@@ -36,18 +50,7 @@ const useTestResults = () => {
     },
   });
 
-  const { data: results = [] } = useQuery({
-    queryKey: ["testResults"],
-    queryFn: getTestResults,
-    select: (data) =>
-      data
-        .filter((res) => res.visibility)
-        .sort((a, b) => new Date(b.date) - new Date(a.date)),
-    onError: (error) => {
-      toast.error(error);
-    },
-  });
-
+  //테스트 결과 삭제
   const deleteMutation = useMutation({
     mutationFn: deleteTestResult,
     onSuccess: () => {
@@ -59,6 +62,7 @@ const useTestResults = () => {
     },
   });
 
+  //테스트 결과 공개/비공개
   const toggleVisibilityMutation = useMutation({
     mutationFn: ({ id, visibility }) =>
       updateTestResultVisibility(id, visibility),
