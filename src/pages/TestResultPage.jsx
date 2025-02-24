@@ -3,11 +3,14 @@ import { mbtiDescriptions } from "../utils/mbtiCalculator";
 import useTestResults from "../hooks/useTestResults";
 import Button from "../components/Button";
 import useAuthStore from "../zustand/bearsStore";
+import useKakaoShare from "../hooks/useKakaoShare";
 
 const TestResultPage = () => {
   const { user } = useAuthStore();
   const { results, deleteMutation, toggleVisibilityMutation } =
     useTestResults();
+
+  const { handleShareResult } = useKakaoShare(user);
 
   if (!results.length)
     return (
@@ -73,6 +76,16 @@ const TestResultPage = () => {
                     }
                   >
                     {res.visibility ? "비공개" : "공개"}
+                  </Button>
+                  <Button
+                    onClick={() => handleShareResult(res.result)}
+                    className={
+                      index % 2 === 0
+                        ? "bg-[#E98934] hover:bg-[#1C5952]"
+                        : "bg-[#1C5952] hover:bg-[#E98934]"
+                    }
+                  >
+                    결과 공유하기
                   </Button>
                 </div>
               )}

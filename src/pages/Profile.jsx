@@ -5,6 +5,7 @@ import Button from "../components/Button";
 import useTestResults from "../hooks/useTestResults";
 import { toast } from "react-toastify";
 import useAuthStore from "../zustand/bearsStore";
+import useKakaoShare from "../hooks/useKakaoShare";
 
 const Profile = () => {
   const { user, fetchUserProfile } = useAuthStore();
@@ -12,6 +13,7 @@ const Profile = () => {
   const { deleteMutation, toggleVisibilityMutation } = useTestResults();
   const [nickname, setNickname] = useState(user?.nickname || "");
   const [results, setResults] = useState([]);
+  const { handleShareResult } = useKakaoShare(user);
 
   // console.log(user); // 새로고침 시 null
 
@@ -146,6 +148,16 @@ const Profile = () => {
                           }
                         >
                           {res.visibility ? "비공개" : "공개"}
+                        </Button>
+                        <Button
+                          onClick={() => handleShareResult(res.result)}
+                          className={
+                            index % 2 === 0
+                              ? "bg-[#E98934] hover:bg-[#1C5952]"
+                              : "bg-[#1C5952] hover:bg-[#E98934]"
+                          }
+                        >
+                          결과 공유하기
                         </Button>
                       </div>
                     )}
