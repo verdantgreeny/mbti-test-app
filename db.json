@@ -95,6 +95,22 @@
       "visibility": true,
       "date": "2025-02-24 02:01:40",
       "userId": "mbtitest08"
+    },
+    {
+      "id": "c00f",
+      "nickname": "mbtitestlast(수정)",
+      "result": "ESTJ",
+      "visibility": true,
+      "date": "2025-02-24 06:39:24",
+      "userId": "mbtitestlast"
+    },
+    {
+      "id": "eb63",
+      "nickname": "mbtitestlast(수정)",
+      "result": "ESTJ",
+      "visibility": true,
+      "date": "2025-02-24 06:40:00",
+      "userId": "mbtitestlast"
     }
   ]
 }
