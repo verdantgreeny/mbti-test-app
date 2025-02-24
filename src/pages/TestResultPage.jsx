@@ -28,7 +28,7 @@ const TestResultPage = () => {
             }`}
           >
             <div className="flex flex-col space-y-2 w-full">
-              <p className="text-xl font-medium flex items-center justify-between">
+              <p className="text-sm font-medium flex items-center justify-between md:text-xl pr-6">
                 <img
                   src="/flower3.png"
                   alt="꽃"

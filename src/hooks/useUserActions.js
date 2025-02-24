@@ -50,7 +50,6 @@ const useUserActions = () => {
       const { data } = await updateProfile({ nickname }, accessToken);
       toast.success(`'${data.nickname}'(으)로 닉네임이 변경되었습니다.`);
     } catch (error) {
-      console.error(error.response?.data?.message || error.message);
       toast.error(error.response?.data?.message || "프로필 업데이트 실패");
     }
   };
