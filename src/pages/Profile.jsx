@@ -11,7 +11,7 @@ const Profile = () => {
   const [nickname, setNickname] = useState(user?.nickname || "");
   const [results, setResults] = useState([]);
   const { updateProfileHandler } = useUserActions();
-  const { handleDelete, handleToggleVisibility } = useTestResults();
+  const { deleteMutation, toggleVisibilityMutation } = useTestResults();
 
   const fetchTestResults = async () => {
     try {
@@ -42,12 +42,15 @@ const Profile = () => {
   };
 
   const handleDeleteUserResult = async (id) => {
-    await handleDelete(id);
+    await deleteMutation.mutateAsync(id);
     await fetchTestResults();
   };
 
   const handleToggleUserResult = async (id, currentVisibility) => {
-    await handleToggleVisibility(id, currentVisibility);
+    await toggleVisibilityMutation.mutateAsync({
+      id,
+      visibility: !currentVisibility,
+    });
     setResults((prev) =>
       prev.map((res) =>
         res.id === id ? { ...res, visibility: !currentVisibility } : res

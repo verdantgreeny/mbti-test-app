@@ -6,7 +6,8 @@ import Button from "../components/Button";
 
 const TestResultPage = () => {
   const { user } = useContext(AuthContext);
-  const { results, handleDelete, handleToggleVisibility } = useTestResults();
+  const { results, deleteMutation, toggleVisibilityMutation } =
+    useTestResults();
 
   if (!results.length)
     return (
@@ -43,7 +44,7 @@ const TestResultPage = () => {
               {user && res.userId === user.id && (
                 <div className="flex justify-end space-x-3 mt-2">
                   <Button
-                    onClick={() => handleDelete(res.id)}
+                    onClick={() => deleteMutation.mutateAsync(res.id)}
                     className={
                       index % 2 === 0
                         ? "bg-[#E98934] hover:bg-[#1C5952]"
@@ -54,7 +55,10 @@ const TestResultPage = () => {
                   </Button>
                   <Button
                     onClick={() =>
-                      handleToggleVisibility(res.id, res.visibility)
+                      toggleVisibilityMutation.mutateAsync(
+                        res.id,
+                        res.visibility
+                      )
                     }
                     className={
                       index % 2 === 0
