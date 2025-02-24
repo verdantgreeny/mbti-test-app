@@ -6,12 +6,12 @@ const Home = () => {
   const { TEST_PAGE } = ROUTES;
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center min-h-full text-white p-4">
+    <div className="flex flex-col md:flex-row items-center justify-center min-h-full text-white p-4 ">
       {/* 왼쪽 이미지 */}
       <img
-        src="/flower.png"
+        src="/home2.png"
         alt="메인홈화면 이미지"
-        className="w-1/3 max-w-xs hover:animate-wiggle transition-transform duration-2000"
+        className="w-1/3 max-w-xs hover:animate-wiggle transition-transform duration-2000 rounded-full mb-10"
       />
 
       {/* 중앙 컨텐츠 */}
@@ -36,9 +36,9 @@ const Home = () => {
 
       {/* 오른쪽 이미지 */}
       <img
-        src="/flower2.png"
+        src="/home.png"
         alt="메인홈화면 이미지"
-        className="w-1/3 max-w-xs hover:animate-wiggle transition-transform duration-2000 hidden md:block"
+        className="w-1/3 max-w-xs hover:animate-wiggle transition-transform duration-2000 hidden md:block rounded-full"
       />
     </div>
   );

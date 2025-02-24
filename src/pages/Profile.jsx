@@ -61,7 +61,9 @@ const Profile = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-full text-white">
       <div className="max-w-2xl w-full border rounded-lg p-10 space-y-10">
-        <h1 className="text-3xl font-bold text-center">프로필 수정</h1>
+        <h1 className="text-2xl md:text-3xl font-bold text-center">
+          프로필 수정
+        </h1>
         <form onSubmit={handleSubmit} className="space-y-10">
           <div className="flex items-center justify-center space-x-4">
             <label htmlFor="nickname" className="block mb-2 font-bold text-2xl">
@@ -87,7 +89,9 @@ const Profile = () => {
 
         {/* 사용자의 테스트 결과 표시 */}
         <div className="mt-10">
-          <h2 className="text-2xl font-bold text-center mb-4">테스트 결과</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
+            테스트 결과
+          </h2>
           {results.length === 0 ? (
             <p className="text-center">아직 제출한 테스트 결과가 없습니다.</p>
           ) : (
@@ -101,7 +105,7 @@ const Profile = () => {
                       : "bg-[#1C5952] text-white"
                   }`}
                 >
-                  <div className="flex flex-col space-y-2 w-full">
+                  <div className="flex flex-col space-y-3 w-full">
                     <p className=" text-xl font-medium text-center truncate">
                       "{res.nickname}"님의 결과
                     </p>
@@ -111,7 +115,7 @@ const Profile = () => {
                       {res.result}
                     </p>
                     {res.userId === user.id && (
-                      <div className="flex justify-end space-x-3 mt-2">
+                      <div className="flex flex-col md:flex-row justify-end space-y-2 md:space-y-0 md:space-x-3 mt-4">
                         <Button
                           onClick={() => handleDeleteUserResult(res.id)}
                           className={

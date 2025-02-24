@@ -35,8 +35,8 @@ const TestForm = ({ onSubmit }) => {
               <label
                 key={i}
                 className={`block p-3 border rounded-lg cursor-pointer transition-colors duration-300 ${
-                  answers[index]?.answer === option ? "bg-slate-900" : ""
-                } hover:bg-slate-900`}
+                  answers[index]?.answer === option ? "bg-[#1c595263]" : ""
+                } hover:bg-[#e9883452]`}
               >
                 <input
                   type="radio"
