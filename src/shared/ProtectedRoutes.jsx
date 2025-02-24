@@ -31,3 +31,7 @@ const ProtectedRoutes = ({ element, isLogin }) => {
 };
 
 export default ProtectedRoutes;
+
+
+
+

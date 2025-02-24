@@ -12,7 +12,7 @@ const Signup = () => {
 
   return (
     <div className="flex justify-center items-center min-h-full text-white">
-      <div className=" p-10 rounded-lg shadow-md max-w-md w-full space-y-8 border">
+      <div className=" p-10 rounded-lg max-w-md w-full space-y-8 border">
         <h1 className="text-3xl font-bold text-center mb-6">회원가입</h1>
         <AuthForm mode="signup" onSubmit={handleSignup} />
         <div className="text-center mt-6">

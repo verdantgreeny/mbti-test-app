@@ -13,6 +13,19 @@ const Profile = () => {
   const { updateProfileHandler } = useUserActions();
   const { handleDelete, handleToggleVisibility } = useTestResults();
 
+  const fetchTestResults = async () => {
+    try {
+      const data = await getTestResults(user.id);
+      const userResults = data
+        .filter((res) => res.userId === user.id) //유저가 쓴 글만 가져오기
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
+      setResults(userResults);
+    } catch (error) {
+      // console.log(error);
+      toast.error("테스트 결과를 불러오지 못했습니다.");
+    }
+  };
+
   useEffect(() => {
     setNickname(user?.nickname || "");
     fetchTestResults();
@@ -26,19 +39,6 @@ const Profile = () => {
     e.preventDefault();
     const res = await updateProfileHandler(nickname);
     //  console.log(res);
-  };
-
-  const fetchTestResults = async () => {
-    try {
-      const data = await getTestResults(user.id);
-      const userResults = data
-        .filter((res) => res.userId === user.id) //유저가 쓴 글만 가져오기
-        .sort((a, b) => new Date(b.date) - new Date(a.date)); 
-      setResults(userResults);
-    } catch (error) {
-      // console.log(error);
-      toast.error("테스트 결과를 불러오지 못했습니다.");
-    }
   };
 
   const handleDeleteUserResult = async (id) => {

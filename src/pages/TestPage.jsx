@@ -42,7 +42,7 @@ const TestPage = () => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center text-white">
-      <div className="rounded-lg p-8 max-w-2xl w-full h-full shadow-lg">
+      <div className="rounded-lg p-8 max-w-2xl w-full h-full ">
         {!result ? (
           <>
             <h1 className="text-3xl font-bold text-primary-color mb-6 text-center">
@@ -52,11 +52,11 @@ const TestPage = () => {
           </>
         ) : (
           <>
-            <h1 className="text-2xl font-bold text-primary-color mb-6 text-center">
+            <h1 className="text-2xl font-bold mb-6 text-center">
               "{user.nickname}" 님의 결과
               <p className="text-4xl mt-3"> {result} </p>
             </h1>
-            <div className="flex flex-col items-center space-y-4 p-6 border rounded-lg shadow-md">
+            <div className="flex flex-col items-center space-y-4 p-6 border rounded-lg ">
               <img
                 src="../../public/flower3.png"
                 alt="결과 아이콘"
