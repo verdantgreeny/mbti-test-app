@@ -11,29 +11,45 @@ const api = axios.create({
 });
 
 export const register = async (userData) => {
-  const { data } = await api.post(`${API_URL}/register`, userData);
-  return data;
+  try {
+    const { data } = await api.post(`${API_URL}/register`, userData);
+    return data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const login = async (userData) => {
-  const { data } = await api.post(`${API_URL}/login`, userData);
-  return data;
+  try {
+    const { data } = await api.post(`${API_URL}/login`, userData);
+    return data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const getUserProfile = async (accessToken) => {
-  const { data } = await api.get(`${API_URL}/user`, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
-  return data;
+  try {
+    const { data } = await api.get(`${API_URL}/user`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const updateProfile = async (formData, accessToken) => {
-  const response = await api.patch(`${API_URL}/profile`, formData, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
-  return response;
+  try {
+    const response = await api.patch(`${API_URL}/profile`, formData, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return response;
+  } catch (error) {
+    throw error;
+  }
 };
