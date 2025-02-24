@@ -57,7 +57,7 @@ const TestResultPage = () => {
                     onClick={() =>
                       toggleVisibilityMutation.mutateAsync({
                         id: res.id,
-                        visibility: res.visibility,
+                        visibility: !res.visibility,
                       })
                     }
                     className={

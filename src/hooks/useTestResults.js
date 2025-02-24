@@ -32,7 +32,7 @@ const useTestResults = () => {
   const { data: results = [] } = useQuery({
     queryKey: ["testResults"],
     queryFn: getTestResults,
-    selet: (data) =>
+    select: (data) =>
       data
         .filter((res) => res.visibility)
         .sort((a, b) => new Date(b.date) - new Date(a.date)),
@@ -80,15 +80,21 @@ const useTestResults = () => {
   const toggleVisibilityMutation = useMutation({
     mutationFn: ({ id, visibility }) =>
       updateTestResultVisibility(id, visibility),
-    onSuccess: (updated) => {
-      queryClient.invalidateQueries(["testResults"]);
+    onSuccess: (updated, { id }) => {
+      queryClient.setQueryData(["testResults"], (oldResults) =>
+        oldResults
+          .map((res) =>
+            res.id === id ? { ...res, visibility: updated.visibility } : res
+          )
+          .filter((res) => res.visibility)
+      );
+
       toast.success(
         `결과가 ${updated.visibility ? "공개" : "비공개"}되었습니다.`
       );
     },
   });
 
-  
   return {
     results,
     deleteMutation,

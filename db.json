@@ -9,18 +9,10 @@
       "userId": "mmbbttii"
     },
     {
-      "id": "165d",
-      "nickname": "최원장 튜터",
-      "result": "ESTJ",
-      "visibility": false,
-      "date": "2025-02-23 11:14:13",
-      "userId": "mbtitest"
-    },
-    {
       "id": "ec29",
       "nickname": "최원장 튜터",
       "result": "ESFP",
-      "visibility": true,
+      "visibility": false,
       "date": "2025-02-23 11:15:07",
       "userId": "mbtitest"
     },
@@ -76,7 +68,7 @@
       "id": "be59",
       "nickname": "최원장 튜터",
       "result": "INFP",
-      "visibility": true,
+      "visibility": false,
       "date": "2025-02-23 13:02:28",
       "userId": "mbtitest"
     },
@@ -100,7 +92,7 @@
       "id": "10c9",
       "nickname": "최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터최원장 튜터",
       "result": "INFJ",
-      "visibility": false,
+      "visibility": true,
       "date": "2025-02-23 14:24:15",
       "userId": "mbtitest"
     },
