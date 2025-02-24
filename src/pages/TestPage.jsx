@@ -52,7 +52,7 @@ const TestPage = () => {
           </>
         ) : (
           <>
-            <h1 className="text-3xl font-bold text-primary-color mb-6 text-center">
+            <h1 className="text-2xl font-bold text-primary-color mb-6 text-center">
               "{user.nickname}" 님의 결과
               <p className="text-4xl mt-3"> {result} </p>
             </h1>
