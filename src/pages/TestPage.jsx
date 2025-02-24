@@ -27,17 +27,48 @@ const TestPage = () => {
     navigate(ROUTES.TEST_RESULT_PAGE);
   };
 
-  const handleShareResult = async () => {
+  const handleShareResult = () => {
     if (!result) return;
 
-    const shareText = `${user.nickname}님의 MBTI 결과는 ${result}입니다!\n\n${mbtiDescriptions[result]} \n\n 나도 해보기 ===> ${window.location.href}`;
-
-    try {
-      await navigator.clipboard.writeText(shareText); // 클립보드에 텍스트를 복사하는 기능
-      toast.success("결과가 클립보드에 복사되었습니다.");
-    } catch (error) {
-      toast.error("복사 실패했씁니다.");
+    // Kakao SDK가 로드되었는지 확인
+    if (!window.Kakao) {
+      toast.error("Kakao SDK가 로드되지 않았습니다.");
+      return;
     }
+
+    if (!window.Kakao.isInitialized()) {
+      window.Kakao.init("1031360ce41e4d35acea6fe1571b7314");
+    }
+
+    window.Kakao.Link.sendDefault({
+      objectType: "feed",
+      content: {
+        title: `${user.nickname}님의 MBTI 결과는 ${result}`,
+        description: mbtiDescriptions[result] || "",
+        imageUrl:
+          "/home2.png",
+        link: {
+          mobileWebUrl: window.location.href,
+          webUrl: window.location.href,
+        },
+      },
+      buttons: [
+        {
+          title: "결과 보기",
+          link: {
+            mobileWebUrl: window.location.href,
+            webUrl: window.location.href,
+          },
+        },
+      ],
+      success: () => {
+        toast.success("카카오톡으로 공유되었습니다.");
+      },
+      fail: (error) => {
+        // console.error(error);
+        toast.error("카카오톡 공유에 실패했습니다.");
+      },
+    });
   };
 
   return (
