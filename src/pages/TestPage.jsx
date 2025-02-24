@@ -45,8 +45,7 @@ const TestPage = () => {
       content: {
         title: `${user.nickname}님의 MBTI 결과는 ${result}`,
         description: mbtiDescriptions[result] || "",
-        imageUrl:
-          "/home2.png",
+        imageUrl: `${window.location.href}/home2.png`,
         link: {
           mobileWebUrl: window.location.href,
           webUrl: window.location.href,
