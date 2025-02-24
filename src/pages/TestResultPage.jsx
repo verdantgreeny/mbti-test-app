@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { mbtiDescriptions } from "../utils/mbtiCalculator";
-import { AuthContext } from "../context/AuthContext";
 import useTestResults from "../hooks/useTestResults";
 import Button from "../components/Button";
+import useAuthStore from "../zustand/bearsStore";
 
 const TestResultPage = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuthStore();
   const { results, deleteMutation, toggleVisibilityMutation } =
     useTestResults();
 

@@ -1,5 +1,5 @@
-import Router from "./shared/Router";
 import { AuthProvider } from "./context/AuthContext";
+import Router from "./shared/Router";
 import { ToastContainer } from "react-toastify";
 
 function App() {

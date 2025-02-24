@@ -1,13 +1,13 @@
-import React, { useContext, useState, useEffect } from "react";
-import { AuthContext } from "../context/AuthContext";
+import React, { useState, useEffect } from "react";
 import useUserActions from "../hooks/useUserActions";
 import { getTestResults } from "../api/testResults";
 import Button from "../components/Button";
 import useTestResults from "../hooks/useTestResults";
 import { toast } from "react-toastify";
+import useAuthStore from "../zustand/bearsStore";
 
 const Profile = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuthStore();
   const [nickname, setNickname] = useState(user?.nickname || "");
   const [results, setResults] = useState([]);
   const { updateProfileHandler } = useUserActions();

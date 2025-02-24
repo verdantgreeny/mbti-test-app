@@ -1,12 +1,12 @@
-import { useContext } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login, register, updateProfile } from "../api/auth";
 import { ROUTES } from "../constants/routes";
-import { AuthContext } from "../context/AuthContext";
+import useAuthStore from "../zustand/bearsStore";
 
 const useUserActions = () => {
-  const { authenticateUser, accessToken } = useContext(AuthContext);
+  const { authenticateUser, accessToken } = useAuthStore();
   const navigate = useNavigate();
   const { LOGIN } = ROUTES;
 

@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Outlet, Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { ROUTES } from "../constants/routes";
+import useAuthStore from "../zustand/bearsStore";
 
 const Layout = () => {
-  const { isAuthenticated, logoutUser } = useContext(AuthContext);
+  const { isAuthenticated, logoutUser } = useAuthStore();
   const navigate = useNavigate();
   const { HOME, LOGIN, SIGNUP, PROFILE, TEST_PAGE, TEST_RESULT_PAGE } = ROUTES;
   const [isMenuOpen, setIsMenuOpen] = useState(false);

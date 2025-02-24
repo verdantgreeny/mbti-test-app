@@ -1,16 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import TestForm from "../components/TestForm";
 import { mbtiDescriptions } from "../utils/mbtiCalculator";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../constants/routes";
-import { AuthContext } from "../context/AuthContext";
 import Button from "../components/Button";
 import { toast } from "react-toastify";
 import useTestResults from "../hooks/useTestResults";
+import useAuthStore from "../zustand/bearsStore";
 
 const TestPage = () => {
   const [result, setResult] = useState(null);
-  const { user } = useContext(AuthContext);
+  const { user } = useAuthStore();
   const navigate = useNavigate();
 
   const { testSubmitMutation } = useTestResults();

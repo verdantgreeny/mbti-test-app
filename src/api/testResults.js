@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "https://smart-fortunate-fighter.glitch.me"
-const TEST_RESULTS_PATH = "/testResults"
+const BASE_URL = "https://smart-fortunate-fighter.glitch.me";
+const TEST_RESULTS_PATH = "/testResults";
 const API_URL = BASE_URL + TEST_RESULTS_PATH;
 
 //테스트 결과들 가져오기
