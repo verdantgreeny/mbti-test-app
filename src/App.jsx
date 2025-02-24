@@ -1,10 +1,9 @@
-import { AuthProvider } from "./context/AuthContext";
 import Router from "./shared/Router";
 import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <AuthProvider>
+    <>
       <ToastContainer
         position="top-right"
         autoClose={2000}
@@ -17,7 +16,7 @@ function App() {
         theme="dark"
       />
       <Router />
-    </AuthProvider>
+    </>
   );
 }
 

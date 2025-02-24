@@ -8,10 +8,10 @@ import {
 import { toast } from "react-toastify";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { calculateMBTI } from "../utils/mbtiCalculator";
-import { AuthContext } from "../context/AuthContext";
+import useAuthStore from "../zustand/bearsStore";
 
 const useTestResults = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuthStore();
   const queryClient = useQueryClient();
 
   const testSubmitMutation = useMutation({
