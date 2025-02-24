@@ -9,11 +9,10 @@ import useTestResults from "../hooks/useTestResults";
 import useAuthStore from "../zustand/bearsStore";
 
 const TestPage = () => {
-  const [result, setResult] = useState(null);
   const { user } = useAuthStore();
-  const navigate = useNavigate();
-
   const { testSubmitMutation } = useTestResults();
+  const [result, setResult] = useState(null);
+  const navigate = useNavigate();
 
   const handleTestSubmit = async (answers) => {
     const res = await testSubmitMutation.mutateAsync(answers);

@@ -7,11 +7,20 @@ import { toast } from "react-toastify";
 import useAuthStore from "../zustand/bearsStore";
 
 const Profile = () => {
-  const { user } = useAuthStore();
-  const [nickname, setNickname] = useState(user?.nickname || "");
-  const [results, setResults] = useState([]);
+  const { user, fetchUserProfile } = useAuthStore();
   const { updateProfileHandler } = useUserActions();
   const { deleteMutation, toggleVisibilityMutation } = useTestResults();
+  const [nickname, setNickname] = useState(user?.nickname || "");
+  const [results, setResults] = useState([]);
+
+  // console.log(user); // 새로고침 시 null
+
+  // 새로고침 시 테스트 결과를 불러오지 못한 것에 대한 임시방편
+  useEffect(() => {
+    if (!user) {
+      fetchUserProfile();
+    }
+  }, [user, fetchUserProfile]);
 
   const fetchTestResults = async () => {
     try {

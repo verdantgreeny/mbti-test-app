@@ -13,8 +13,14 @@ const api = axios.create({
 
 //테스트 결과들 가져오기
 export const getTestResults = async () => {
-  const response = await api.get(TEST_RESULTS_PATH);
-  return response.data;
+  try {
+    const response = await api.get(TEST_RESULTS_PATH);
+    // console.log("응답 데이터:", response.data);
+    return response.data;
+  } catch (error) {
+    // console.error("API 요청 오류:", error);
+    throw error;
+  }
 };
 
 //테스트 결과 만들기

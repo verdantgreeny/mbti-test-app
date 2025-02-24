@@ -12,6 +12,7 @@ import { ROUTES } from "../constants/routes";
 
 const Router = () => {
   const { HOME, LOGIN, SIGNUP, PROFILE, TEST_PAGE, TEST_RESULT_PAGE } = ROUTES;
+  
   const router = createBrowserRouter([
     {
       element: <Layout />,

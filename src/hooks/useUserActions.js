@@ -7,8 +7,8 @@ import useAuthStore from "../zustand/bearsStore";
 
 const useUserActions = () => {
   const { authenticateUser, accessToken } = useAuthStore();
-  const navigate = useNavigate();
   const { LOGIN } = ROUTES;
+  const navigate = useNavigate();
 
   const loginHandler = async (userData) => {
     try {

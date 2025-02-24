@@ -6,9 +6,9 @@ import useAuthStore from "../zustand/bearsStore";
 
 const Layout = () => {
   const { isAuthenticated, logoutUser } = useAuthStore();
-  const navigate = useNavigate();
   const { HOME, LOGIN, SIGNUP, PROFILE, TEST_PAGE, TEST_RESULT_PAGE } = ROUTES;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logoutUser();
