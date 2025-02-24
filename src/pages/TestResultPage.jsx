@@ -55,10 +55,10 @@ const TestResultPage = () => {
                   </Button>
                   <Button
                     onClick={() =>
-                      toggleVisibilityMutation.mutateAsync(
-                        res.id,
-                        res.visibility
-                      )
+                      toggleVisibilityMutation.mutateAsync({
+                        id: res.id,
+                        visibility: res.visibility,
+                      })
                     }
                     className={
                       index % 2 === 0
