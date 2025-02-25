@@ -120,6 +120,7 @@ json-server를 활용하여 로컬 환경에서 API 서버를 구성, 실제 환
  ┃ ┣ 📜TestForm.jsx
  ┃ ┗ 📜TestResultCard.jsx
  ┣ 📂constants
+ ┃ ┣ 📜queryKey.js
  ┃ ┗ 📜routes.js
  ┣ 📂data
  ┃ ┗ 📜questions.js
