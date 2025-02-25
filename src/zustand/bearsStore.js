@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { getUserProfile } from "../api/auth";
 import { persist } from "zustand/middleware";
+import { toast } from "react-toastify";
 
 const useAuthStore = create(
   persist(
@@ -28,14 +29,15 @@ const useAuthStore = create(
           const res = await getUserProfile(accessToken); //api로 데이터 요청
           set({ user: res }); // 성공 시 사용자 정보를 user에 저장
         } catch (error) {
-          console.log(error.message);
+          toast.error("데이터를 가져오기 못했습니다.");
         }
       },
     }),
     {
       name: "user",
       getStorage: () => localStorage, //getStorage: 저장할 스토리지 지정
-      partialize: (state) => ({ //저장할 상태(state) 지정
+      partialize: (state) => ({
+        //저장할 상태(state) 지정
         accessToken: state.accessToken,
         isAuthenticated: state.isAuthenticated,
         user: state.user,

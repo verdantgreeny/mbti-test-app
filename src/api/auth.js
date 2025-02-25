@@ -12,7 +12,7 @@ const api = axios.create({
 
 export const register = async (userData) => {
   try {
-    const { data } = await api.post(`${API_URL}/register`, userData);
+    const { data } = await api.post("/register", userData);
     return data;
   } catch (error) {
     throw error;
@@ -21,7 +21,7 @@ export const register = async (userData) => {
 
 export const login = async (userData) => {
   try {
-    const { data } = await api.post(`${API_URL}/login`, userData);
+    const { data } = await api.post("/login", userData);
     return data;
   } catch (error) {
     throw error;
@@ -30,7 +30,7 @@ export const login = async (userData) => {
 
 export const getUserProfile = async (accessToken) => {
   try {
-    const { data } = await api.get(`${API_URL}/user`, {
+    const { data } = await api.get("/user", {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
@@ -43,7 +43,7 @@ export const getUserProfile = async (accessToken) => {
 
 export const updateProfile = async (formData, accessToken) => {
   try {
-    const response = await api.patch(`${API_URL}/profile`, formData, {
+    const response = await api.patch("/profile", formData, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
