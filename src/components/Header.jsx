@@ -43,6 +43,9 @@ const Header = () => {
           </Link>
           {!isAuthenticated ? (
             <>
+              <Link to={TEST_RESULT_PAGE} className="hover:underline">
+                Test Results
+              </Link>
               <Link to={LOGIN} className="hover:underline">
                 Login
               </Link>
@@ -82,6 +85,9 @@ const Header = () => {
               </Link>
               {!isAuthenticated ? (
                 <>
+                  <Link to={TEST_RESULT_PAGE} className="hover:underline">
+                    Test Results
+                  </Link>
                   <Link
                     onClick={() => setIsMenuOpen(false)}
                     to={LOGIN}
