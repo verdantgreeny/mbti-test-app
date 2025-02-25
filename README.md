@@ -81,6 +81,7 @@ json-server를 활용하여 로컬 환경에서 API 서버를 구성, 실제 환
 **1. 🚀 프로젝트 화면**
 
 **1-1. Home**
+
 ![](https://velog.velcdn.com/images/verdantgreeny/post/2c010426-4433-4f68-b49e-08deddec1361/image.gif)
 
 
@@ -93,16 +94,20 @@ json-server를 활용하여 로컬 환경에서 API 서버를 구성, 실제 환
 
 
 **1-3. 테스트 페이지**
+
 ![](https://velog.velcdn.com/images/verdantgreeny/post/8d25700a-209c-4e6b-bc91-caebeac363ed/image.gif)
 
 
 **1-4. 테스트 결과 페이지**
+
 ![](https://velog.velcdn.com/images/verdantgreeny/post/329f41b2-f37f-4d04-9da9-f343d7befa8d/image.gif)
 
 **1-5. 프로필 페이지**
+
 ![](https://velog.velcdn.com/images/verdantgreeny/post/430d16f4-49a5-47df-9086-bd30b2a6e22e/image.gif)
 
 **1-6. 반응형**
+
 ![](https://velog.velcdn.com/images/verdantgreeny/post/b83232ce-0a74-4c18-b89f-c22496dd3f47/image.gif)
 
 
