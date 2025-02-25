@@ -13,7 +13,6 @@ const ProtectedRoutes = ({ element, isLogin }) => {
   useEffect(() => {
     if (!isLogin && !isAuthenticated && !hasAlerted.current) {
       // 로그인해야 하는 페이지인데 로그인X
-      toast.info("로그인을 해야 테스트가 가능합니다.");
       hasAlerted.current = true;
       navigate(LOGIN);
     } else if (isLogin && isAuthenticated && !hasAlerted.current) {

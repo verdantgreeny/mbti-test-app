@@ -16,7 +16,7 @@ const useTestResults = () => {
 
   //데이터 조회
   const { data: results = [] } = useQuery({
-    queryKey: ["testResults"], 
+    queryKey: ["testResults"],
     queryFn: getTestResults,
     select: (data) =>
       data

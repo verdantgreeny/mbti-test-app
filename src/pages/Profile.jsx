@@ -8,7 +8,7 @@ import useAuthStore from "../zustand/bearsStore";
 import useKakaoShare from "../hooks/useKakaoShare";
 
 const Profile = () => {
-  const { user, fetchUserProfile } = useAuthStore();
+  const { user } = useAuthStore();
   const { updateProfileHandler } = useUserActions();
   const { deleteMutation, toggleVisibilityMutation } = useTestResults();
   const [nickname, setNickname] = useState(user?.nickname || "");
@@ -19,7 +19,7 @@ const Profile = () => {
     try {
       const data = await getTestResults(user.id);
       const userResults = data
-        .filter((res) => res.userId === user.id) //유저가 쓴 글만 가져오기
+        .filter((res) => res.userId === user.id)
         .sort((a, b) => new Date(b.date) - new Date(a.date));
       setResults(userResults);
     } catch (error) {

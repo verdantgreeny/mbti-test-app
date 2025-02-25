@@ -34,8 +34,8 @@ const useAuthStore = create(
     }),
     {
       name: "user",
-      getStorage: () => localStorage,
-      partialize: (state) => ({
+      getStorage: () => localStorage, //getStorage: 저장할 스토리지 지정
+      partialize: (state) => ({ //저장할 상태(state) 지정
         accessToken: state.accessToken,
         isAuthenticated: state.isAuthenticated,
         user: state.user,
