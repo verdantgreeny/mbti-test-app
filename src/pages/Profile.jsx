@@ -15,15 +15,6 @@ const Profile = () => {
   const [results, setResults] = useState([]);
   const { handleShareResult } = useKakaoShare(user);
 
-  // console.log(user); // 새로고침 시 null
-
-  // 새로고침 시 테스트 결과를 불러오지 못한 것을 해결하기 위해
-  useEffect(() => {
-    if (!user) {
-      fetchUserProfile();
-    }
-  }, [user, fetchUserProfile]);
-
   const fetchTestResults = async () => {
     try {
       const data = await getTestResults(user.id);
