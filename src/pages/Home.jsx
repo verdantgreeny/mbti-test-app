@@ -22,8 +22,8 @@ const Home = () => {
           className="w-40 sm:w-40 md:w-56 mb-4"
         />
 
-        <h3 className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 sm:mb-10">
-          무한한 MBTI <br /> 조합과 가능성
+        <h3 className="sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-10 w-40 ">
+          MBTI로 열리는 <br /> 무한한 가능성, <br /> 나를 알아가는 여정
         </h3>
 
         <Link
