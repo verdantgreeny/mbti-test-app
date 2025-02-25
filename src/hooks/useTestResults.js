@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { calculateMBTI } from "../utils/mbtiCalculator";
 import useAuthStore from "../zustand/bearsStore";
+import { TEST_RESULTS_KEY } from "../constants/queryKey";
 
 const useTestResults = () => {
   const { user } = useAuthStore();
@@ -16,7 +17,7 @@ const useTestResults = () => {
 
   //데이터 조회
   const { data: results = [], isLoading } = useQuery({
-    queryKey: ["testResults"],
+    queryKey: [TEST_RESULTS_KEY],
     queryFn: getTestResults,
     select: (data) =>
       data
@@ -42,7 +43,7 @@ const useTestResults = () => {
       return resultData;
     },
     onSuccess: (newResult) => {
-      queryClient.invalidateQueries(["testResults"]);
+      queryClient.invalidateQueries([TEST_RESULTS_KEY]);
       toast.success(`테스트 결과 (${newResult.result})가 저장되었습니다.`);
     },
     onError: (error) => {
@@ -54,7 +55,7 @@ const useTestResults = () => {
   const deleteMutation = useMutation({
     mutationFn: deleteTestResult,
     onSuccess: () => {
-      queryClient.invalidateQueries(["testResults"]);
+      queryClient.invalidateQueries([TEST_RESULTS_KEY]);
       toast.success("삭제 성공");
     },
     onError: (error) => {
@@ -67,7 +68,7 @@ const useTestResults = () => {
     mutationFn: ({ id, visibility }) =>
       updateTestResultVisibility(id, visibility),
     onSuccess: (updated, { id }) => {
-      queryClient.setQueryData(["testResults"], (oldResults) =>
+      queryClient.setQueryData([TEST_RESULTS_KEY], (oldResults) =>
         oldResults
           .map((res) =>
             res.id === id ? { ...res, visibility: updated.visibility } : res

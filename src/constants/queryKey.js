@@ -1,0 +1,1 @@
+export const TEST_RESULTS_KEY = "testResults";
