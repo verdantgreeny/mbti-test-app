@@ -5,7 +5,7 @@ import { ROUTES } from "../constants/routes";
 import useAuthStore from "../zustand/bearsStore";
 
 const useUserActions = () => {
-  const { authenticateUser, accessToken } = useAuthStore();
+  const { authenticateUser, accessToken, fetchUserProfile } = useAuthStore();
   const { LOGIN } = ROUTES;
   const navigate = useNavigate();
 
@@ -43,6 +43,7 @@ const useUserActions = () => {
     }
     try {
       const { data } = await updateProfile({ nickname }, accessToken);
+      await fetchUserProfile();
       toast.success(`'${data.nickname}'(으)로 닉네임이 변경되었습니다.`);
     } catch (error) {
       toast.error(error.response?.data?.message || "프로필 업데이트 실패");
