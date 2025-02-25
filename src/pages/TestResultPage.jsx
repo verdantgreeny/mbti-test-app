@@ -3,7 +3,10 @@ import useTestResults from "../hooks/useTestResults";
 import TestResultCard from "../components/TestResultCard";
 
 const TestResultPage = () => {
-  const { results } = useTestResults();
+  const { results, isLoading } = useTestResults();
+
+  if (isLoading)
+    return <div className="p-6 text-center text-white"> Loading 중 </div>;
 
   if (!results.length)
     return (

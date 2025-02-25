@@ -15,6 +15,7 @@ const Profile = () => {
   const [results, setResults] = useState([]);
   const { handleShareResult } = useKakaoShare(user);
 
+  // 테스트 결과 가져오기
   const fetchTestResults = async () => {
     try {
       const data = await getTestResults(user.id);
@@ -27,25 +28,24 @@ const Profile = () => {
     }
   };
 
-  useEffect(() => {
-    setNickname(user?.nickname || "");
-    fetchTestResults();
-  }, [user]);
-
+  // 닉네임 변경
   const handleNicknameChange = (e) => {
     setNickname(e.target.value);
   };
 
+  // 닉네임 업데이트
   const handleSubmit = async (e) => {
     e.preventDefault();
     await updateProfileHandler(nickname);
   };
 
+  // 테스트 결과 삭제
   const handleDeleteUserResult = async (id) => {
     await deleteMutation.mutateAsync(id);
     await fetchTestResults();
   };
 
+  // 테스트 결과 공개/비공개
   const handleToggleUserResult = async (id, currentVisibility) => {
     await toggleVisibilityMutation.mutateAsync({
       id,
@@ -57,6 +57,12 @@ const Profile = () => {
       )
     );
   };
+
+  // 유저 변경 됐을 때 테스트 결과 다시 가져오기
+  useEffect(() => {
+    setNickname(user?.nickname || "");
+    fetchTestResults();
+  }, [user]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-full text-white">

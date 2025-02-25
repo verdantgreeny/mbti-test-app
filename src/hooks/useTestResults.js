@@ -15,7 +15,7 @@ const useTestResults = () => {
   const queryClient = useQueryClient();
 
   //데이터 조회
-  const { data: results = [] } = useQuery({
+  const { data: results = [], isLoading } = useQuery({
     queryKey: ["testResults"],
     queryFn: getTestResults,
     select: (data) =>
@@ -86,6 +86,7 @@ const useTestResults = () => {
 
   return {
     results,
+    isLoading,
     testSubmitMutation,
     deleteMutation,
     toggleVisibilityMutation,
