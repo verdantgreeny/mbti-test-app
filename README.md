@@ -101,6 +101,7 @@ json-server를 활용하여 로컬 환경에서 API 서버를 구성, 실제 환
 ![](https://velog.velcdn.com/images/verdantgreeny/post/430d16f4-49a5-47df-9086-bd30b2a6e22e/image.gif)
 
 **1-6. 반응형**
+<br/>
 ![](https://velog.velcdn.com/images/verdantgreeny/post/b83232ce-0a74-4c18-b89f-c22496dd3f47/image.gif)
 
 <hr>
