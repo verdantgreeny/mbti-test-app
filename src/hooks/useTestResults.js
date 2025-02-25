@@ -36,7 +36,10 @@ const useTestResults = () => {
         nickname: user?.nickname || "",
         result: mbtiResult,
         visibility: true,
-        date: new Date().toISOString().replace("T", " ").split(".")[0],
+        date: new Date(new Date().getTime() + 9 * 60 * 60 * 1000) // UTC + 9시간
+          .toISOString()
+          .replace("T", " ")
+          .split(".")[0],
         userId: user?.id || "unknown",
       };
       await createTestResult(resultData);
